@@ -1,0 +1,3646 @@
+{
+  "id":"com.adobe.aem:aem-sdk-api:slingosgifeature:aem-author-sdk:2022.9.8722.20220912T101352Z-220800",
+  "variables":{
+    "sling.home":null,
+    "repository.home":"crx-quickstart/repository",
+    "logging.error.file":"logs/error.log",
+    "default.api.regions":"global",
+    "logging.access.file":"logs/access.log",
+    "logging.request.file":"logs/request.log",
+    "logging.upgrade.file":"logs/upgrade.log",
+    "logging.audit.file":"logs/audit.log",
+    "logging.auditlog.file":"logs/auditlog.log",
+    "logging.history.file":"logs/history.log",
+    "logging.queryrecorder.file":"logs/queryrecorder.log"
+  },
+  "configurations":  {
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~cq-dam-cfm-graphql":    {
+      "user.mapping":[
+        "cq-dam-cfm-graphql:graphqlService=[configuration-reader-service,graphql-endpoint-conf-reader-service]",
+        "cq-dam-cfm-graphql:replicationService=[replication-service]",
+        "cq-dam-cfm-graphql:referenceProcessingService=[reference-processing-service,content-reader-service]"
+      ],
+      "user.default":"configuration-reader-service"
+    },
+    "org.apache.sling.graphql.core.GraphQLServlet~sitesgraphql":    {
+      "sling.servlet.selectors":[
+        "sitesgraphql"
+      ],
+      "sling.servlet.extensions":[
+        "json"
+      ],
+      "sling.servlet.methods":[
+        "GET",
+        "POST"
+      ],
+      "sling.servlet.resourceTypes":[
+        "graphql/sites/components/endpoint"
+      ]
+    },
+    "com.adobe.aem.graphql.sites.adapters.sling.SlingGraphQLForwardingServlet~sitesgraphql":    {
+      "sling.servlet.extensions":[
+        "json"
+      ],
+      "sling.servlet.methods":[
+        "GET",
+        "POST"
+      ],
+      "sling.servlet.resourceTypes":[
+        "graphql/sites/components/endpoint"
+      ]
+    },
+    "com.adobe.aem.graphql.sites.adapters.SlingSchemaServlet~sitesgraphql":    {
+      "sling.servlet.extensions":[
+        "GQLschema",
+        "schemaerrors"
+      ],
+      "sling.servlet.methods":[
+        "GET"
+      ],
+      "sling.servlet.resourceTypes":[
+        "graphql/sites/components/endpoint"
+      ]
+    },
+    "org.apache.sling.engine.impl.SlingMainServlet":    {
+      "sling.serverinfo":"Apache Sling",
+      "sling.max.calls:Integer":1500
+    },
+    "org.apache.sling.graphql.core.scripting.GraphQLScriptEngineFactory":    {
+      "service.ranking":100
+    },
+    "org.apache.sling.scripting.java.impl.JavaScriptEngineFactory":    {
+      "service.ranking":200,
+      "java.classdebuginfo":false
+    },
+    "org.apache.sling.scripting.javascript.internal.RhinoJavaScriptEngineFactory":    {
+      "service.ranking":300
+    },
+    "org.apache.sling.scripting.jsp.JspScriptEngineFactory":    {
+      "service.ranking":400,
+      "jasper.classdebuginfo":false,
+      "jasper.mappedfile":false
+    },
+    "org.apache.sling.scripting.sightly.impl.engine.SightlyScriptEngineFactory":    {
+      "service.ranking":500
+    },
+    "org.apache.jackrabbit.oak.plugins.observation.ChangeCollectorProvider":    {
+      "enabled":true
+    },
+    "org.apache.jackrabbit.oak.security.authentication.token.TokenConfigurationImpl":    {
+      "tokenRefresh":false,
+      "passwordHashIterations":"1",
+      "tokenExpiration":"43200000",
+      "tokenLength":"16",
+      "tokenCleanupThreshold":"5"
+    },
+    "org.apache.felix.jaas.Configuration.factory~GuestLoginModule":    {
+      "jaas.controlFlag":"optional",
+      "jaas.classname":"org.apache.jackrabbit.oak.spi.security.authentication.GuestLoginModule",
+      "jaas.ranking:Integer":300,
+      "jaas.realmName":"",
+      "jaas.options":[
+        ""
+      ]
+    },
+    "org.apache.felix.jaas.Configuration.factory~TokenLoginModule":    {
+      "jaas.controlFlag":"sufficient",
+      "jaas.classname":"org.apache.jackrabbit.oak.security.authentication.token.TokenLoginModule",
+      "jaas.ranking:Integer":200,
+      "jaas.realmName":"",
+      "jaas.options":[
+        ""
+      ]
+    },
+    "org.apache.jackrabbit.oak.security.user.UserConfigurationImpl":    {
+      "groupsPath":"/home/groups",
+      "defaultDepth":"1",
+      "importBehavior":"besteffort",
+      "usersPath":"/home/users"
+    },
+    "com.adobe.granite.maintenance.crx.impl.RevisionCleanupTask~main":    {
+      "job.topics":"com/adobe/granite/maintenance/job/RevisionCleanupTask"
+    },
+    "org.apache.sling.commons.threads.impl.DefaultThreadPool.factory-default":    {
+      "name":"default",
+      "maxPoolSize:Integer":10,
+      "minPoolSize:Integer":10
+    },
+    "org.apache.sling.commons.threads.impl.DefaultThreadPool.factory~oak-observation":    {
+      "name":"oak-observation",
+      "maxPoolSize:Integer":20,
+      "minPoolSize:Integer":20
+    },
+    "com.adobe.granite.maintenance.crx.impl.LuceneBinariesCleanupTask":    {
+      "job.topics":"com/adobe/granite/maintenance/job/LuceneBinariesCleanupTask"
+    },
+    "org.apache.felix.jaas.ConfigurationSpi":    {
+      "jaas.defaultRealmName":"jackrabbit.oak",
+      "jaas.globalConfigPolicy":"proxy",
+      "jaas.configProviderName":"FelixJaasProvider"
+    },
+    "org.apache.jackrabbit.oak.plugins.index.lucene.LuceneIndexProviderService":    {
+      "enableCopyOnReadSupport":true
+    },
+    "org.apache.jackrabbit.oak.spi.security.user.action.DefaultAuthorizableActionProvider":    {
+      "userPrivilegeNames":[
+        "jcr:all"
+      ],
+      "groupPrivilegeNames":[
+        "jcr:read"
+      ],
+      "enabledActions":[
+        "org.apache.jackrabbit.oak.spi.security.user.action.AccessControlAction"
+      ]
+    },
+    "org.apache.jackrabbit.oak.spi.security.authentication.external.impl.principal.ExternalAuthorizableActionProvider":    {
+      "failAddMembersForDifferentIdp":false
+    },
+    "org.apache.sling.commons.threads.impl.DefaultThreadPool.factory~oak":    {
+      "name":"oak",
+      "maxPoolSize:Integer":5,
+      "minPoolSize:Integer":1
+    },
+    "org.apache.jackrabbit.oak.spi.security.authorization.principalbased.impl.PrincipalBasedAuthorizationConfiguration":    {
+      "enableAggregationFilter":true
+    },
+    "org.apache.jackrabbit.oak.spi.security.authorization.principalbased.impl.FilterProviderImpl":    {
+      "path":"/home/users/system/cq:services"
+    },
+    "org.apache.felix.jaas.Configuration.factory~LoginModuleImpl":    {
+      "jaas.controlFlag":"sufficient",
+      "jaas.classname":"org.apache.jackrabbit.oak.security.authentication.user.LoginModuleImpl",
+      "jaas.ranking:Integer":100,
+      "jaas.realmName":"",
+      "jaas.options":[
+        ""
+      ]
+    },
+    "org.apache.jackrabbit.oak.plugins.document.DocumentNodeStoreServicePreset":    {
+      "persistentCacheIncludes":[
+        "/libs",
+        "/apps",
+        "/jcr:system/jcr:nodeTypes",
+        "/jcr:system/rep:namespaces"
+      ]
+    },
+    "org.apache.jackrabbit.oak.security.user.RandomAuthorizableNodeName":    {
+      "length":"20"
+    },
+    "org.apache.jackrabbit.oak.security.internal.SecurityProviderRegistration":    {
+      "requiredServicePids":[
+        "org.apache.jackrabbit.oak.security.authorization.AuthorizationConfigurationImpl",
+        "org.apache.jackrabbit.oak.security.principal.PrincipalConfigurationImpl",
+        "org.apache.jackrabbit.oak.security.authentication.token.TokenConfigurationImpl",
+        "org.apache.jackrabbit.oak.spi.security.user.action.DefaultAuthorizableActionProvider",
+        "org.apache.jackrabbit.oak.security.authorization.restriction.RestrictionProviderImpl",
+        "org.apache.jackrabbit.oak.security.user.RandomAuthorizableNodeName",
+        "org.apache.jackrabbit.oak.security.user.UserAuthenticationFactoryImpl",
+        "org.apache.jackrabbit.oak.spi.security.authorization.cug.impl.CugConfiguration",
+        "org.apache.jackrabbit.oak.spi.security.authorization.principalbased.impl.PrincipalBasedAuthorizationConfiguration",
+        "org.apache.jackrabbit.oak.spi.security.authentication.external.impl.principal.ExternalPrincipalConfiguration",
+        "org.apache.jackrabbit.oak.spi.security.authentication.external.impl.principal.ExternalAuthorizableActionProvider"
+      ]
+    },
+    "org.apache.jackrabbit.oak.spi.security.authentication.external.impl.principal.ExternalPrincipalConfiguration":    {
+      "systemPrincipalNames":[
+        "sling-distribution"
+      ],
+      "protectExternalIdentities":"Warn"
+    },
+    "org.apache.jackrabbit.oak.query.QueryEngineSettingsService":    {
+      "ignoredClassNamesInCallTrace":[
+        "org.apache.jackrabbit.oak",
+        "java.lang",
+        "org.apache.sling.jcr.resource.internal.helper.JcrResourceUtil.query",
+        "org.apache.sling.jcr.resource.internal.helper.jcr.BasicQueryLanguageProvider",
+        "org.apache.sling.resourceresolver.impl.providers.stateful.AuthenticatedResourceProvider.findResources",
+        "org.apache.sling.resourceresolver.impl.helper.ResourceResolverControl.findResources",
+        "org.apache.sling.resourceresolver.impl.ResourceResolverImpl.findResources",
+        "com.day.cq.search.impl.builder.QueryImpl",
+        "org.apache.jackrabbit.commons.iterator.RangeIteratorAdapter",
+        "com.google.common.collect.Iterators",
+        "org.apache.jackrabbit.commons.iterator.RangeIteratorDecorator"
+      ]
+    },
+    "com.day.crx.packaging.impl.PackageManagerServlet":    {
+      "packageSizeLimit":"300000000",
+      "packageInstallationTimeLimit":"300"
+    },
+    "org.apache.jackrabbit.vault.packaging.impl.PackagingImpl":    {
+      "overwritePrimaryTypesOfFolders":"false"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~jcrcontentloader":    {
+      "user.mapping":[
+        "org.apache.sling.jcr.contentloader=[sling-content-loader]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~imsyaml":    {
+      "user.mapping":[
+        "com.adobe.granite.ims-yaml-loader:keystorewriter=[user-administration-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~ssl-service":    {
+      "user.mapping":[
+        "com.adobe.granite.security.ui:ssl-service=[ssl-service]",
+        "com.adobe.granite.security.ui:sslService=[ssl-service]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~workflow-external":    {
+      "queue.priority":"MIN",
+      "queue.name":"Granite Workflow External Process Job Queue",
+      "queue.topics":"com/adobe/granite/workflow/external/job*",
+      "queue.type":"TOPIC_ROUND_ROBIN",
+      "queue.queryableJobs":false,
+      "queue.preferRunOnCreationInstance":true,
+      "queue.maxparallel":-1
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~workflow":    {
+      "queue.priority":"MIN",
+      "queue.name":"Granite Workflow Queue",
+      "queue.topics":"com/adobe/granite/workflow/job*",
+      "queue.type":"TOPIC_ROUND_ROBIN",
+      "queue.queryableJobs":false,
+      "queue.preferRunOnCreationInstance":true,
+      "queue.maxparallel":"0.5"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~sling-installer":    {
+      "user.mapping":[
+        "com.adobe.granite.crx-packagemgr:slingInstallerService=[sling-installer-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~activitystreams":    {
+      "user.mapping":[
+        "com.adobe.granite.activitystreams:activity-service=[activity-service]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~workflow-transient":    {
+      "queue.priority":"MIN",
+      "queue.name":"Granite Transient Workflow Queue",
+      "queue.topics":"com/adobe/granite/workflow/transient/job*",
+      "queue.type":"TOPIC_ROUND_ROBIN",
+      "queue.queryableJobs":false,
+      "queue.preferRunOnCreationInstance":true,
+      "queue.maxparallel":"0.5"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~workflow":    {
+      "user.mapping":[
+        "com.adobe.granite.workflow.core:workflow=[workflow-service]",
+        "com.adobe.granite.workflow.core:user=[user-reader-service,group-reader-service]",
+        "com.adobe.granite.workflow.core:repo-reader=[repository-reader-service]",
+        "com.adobe.granite.workflow.core:process=[workflow-process-service,repository-reader-service]",
+        "com.adobe.granite.workflow.console:repo-reader=[repository-reader-service]",
+        "com.adobe.granite.workflow.console:process=[workflow-process-service,repository-reader-service]",
+        "com.adobe.granite.workflow.console:omnisearch-service=[omnisearch-service]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~workflow-timeout":    {
+      "queue.priority":"MIN",
+      "queue.name":"Granite Workflow Timeout Queue",
+      "queue.topics":"com/adobe/granite/workflow/timeout/job",
+      "queue.type":"TOPIC_ROUND_ROBIN",
+      "queue.queryableJobs":false,
+      "queue.preferRunOnCreationInstance":true,
+      "queue.maxparallel":-1
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~maintenance":    {
+      "queue.name":"Maintenance Queue",
+      "queue.topics":"com/adobe/granite/maintenance/job/*",
+      "queue.type":"ORDERED",
+      "queue.retries":0,
+      "queue.keepJobs":true,
+      "queue.maxparallel":1
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~taskmanagement":    {
+      "user.mapping":[
+        "com.adobe.granite.taskmanagement.core:taskmanagement=[taskmanagement-service]",
+        "com.adobe.granite.taskmanagement.core:user=[user-reader-service,group-reader-service]",
+        "com.adobe.granite.taskmanagement.workflow:taskmanagement=[taskmanagement-service]",
+        "com.adobe.granite.taskmanagement.workflow:workflow=[workflow-service]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~workflow-external-process-polling":    {
+      "queue.priority":"MIN",
+      "queue.name":"Granite Workflow External Process Polling Queue",
+      "queue.topics":"com/adobe/granite/workflow/external/polling/event",
+      "queue.type":"TOPIC_ROUND_ROBIN",
+      "queue.queryableJobs":false,
+      "queue.preferRunOnCreationInstance":true,
+      "queue.maxparallel":-1
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~systemoverview":    {
+      "user.mapping":[
+        "com.adobe.granite.operations.ui.core:systemoverview=[sling-scripting,configuration-reader-service]"
+      ]
+    },
+    "org.apache.sling.scripting.sightly.js.impl.jsapi.SlyBindingsValuesProvider":    {
+      "org.apache.sling.scripting.sightly.js.bindings":[
+        "granite:/libs/sling/sightly/js/internal/sly.js",
+        "wcm:/libs/sightly/js/internal/aem.js",
+        "sightly:/libs/sling/sightly/js/internal/sly.js"
+      ]
+    },
+    "org.apache.sling.scripting.sightly.impl.engine.SightlyEngineConfiguration":    {
+      "allowedExpressionOptions":[
+        "cssClassName",
+        "decoration",
+        "decorationTagName",
+        "wcmmode"
+      ]
+    },
+    "com.adobe.granite.cors.impl.CORSPolicyImpl~marketo":    {
+      "alloworiginregexp":"https://.*\\.marketo\\.com"
+    },
+    "org.apache.sling.jcr.resource.internal.JcrSystemUserValidator":    {
+      "validator.id":"org.apache.sling.jcr.resource.internal.JcrSystemUserValidator"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl":    {
+      "user.enable.default.mapping":false,
+      "require.validation":true,
+      "required.user.validators":[
+        "org.apache.sling.jcr.resource.internal.JcrSystemUserValidator",
+        "com.adobe.granite.repository.impl.SystemUserValidation"
+      ],
+      "required.principal.validators":[
+        "org.apache.sling.jcr.resource.internal.JcrSystemUserValidator",
+        "com.adobe.granite.repository.impl.SystemPrincipalsValidation"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~oauth-server":    {
+      "user.mapping":[
+        "com.adobe.granite.oauth.server=[oauthservice,group-reader-service,user-administration-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~ims-license-group-service":    {
+      "user.mapping":[
+        "com.adobe.granite.auth.ims:Adobe IMS License Service=[ims-license-group-service]",
+        "com.adobe.cq.adobeims.core:Adobe IMS License Service=[ims-license-group-service]"
+      ]
+    },
+    "org.apache.felix.http":    {
+      "org.apache.felix.proxy.load.balancer.connection.enable":true,
+      "org.apache.felix.http.session.timeout:Integer":10,
+      "org.apache.felix.https.jetty.protocols.excluded":[
+        "SSLv3"
+      ]
+    },
+    "org.apache.sling.event.impl.jobs.jcr.PersistenceHandler":    {
+      "job.consumermanager.disableDistribution":"false"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~jetty-ssl":    {
+      "user.mapping":[
+        "com.adobe.granite.jetty.ssl=[user-administration-service,group-administration-service]"
+      ]
+    },
+    "org.apache.sling.distribution.resources.impl.DistributionServiceResourceProviderFactory~exporters":    {
+      "kind":"exporter",
+      "provider.roots":[
+        "/libs/sling/distribution/services/exporters"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~tenant":    {
+      "user.mapping":[
+        "org.apache.sling.tenant=[sling-tenant,repository-reader-service]"
+      ]
+    },
+    "org.apache.felix.hc.core.impl.CompositeHealthCheck~system":    {
+      "filter.tags":[
+        "system"
+      ],
+      "hc.tags":[
+        ""
+      ],
+      "hc.name":"System Maintenance",
+      "hc.mbean.name":"systemchecks"
+    },
+    "org.apache.sling.jcr.base.internal.LoginAdminWhitelist.fragment~sling-junit":    {
+      "whitelist.bundles":[
+        "org.apache.sling.junit.core",
+        "org.apache.sling.junit.scriptable"
+      ],
+      "whitelist.name":"sling-junit"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~sling-scripting":    {
+      "user.mapping":[
+        "org.apache.sling.scripting.sightly.js.provider=[sling-scripting]",
+        "org.apache.sling.scripting.core=[sling-scripting]",
+        "org.apache.sling.servlets.resolver:scripts=[sling-scripting]",
+        "org.apache.sling.servlets.resolver:console=[repository-reader-service]"
+      ]
+    },
+    "org.apache.felix.eventadmin.impl.EventAdmin":    {
+      "org.apache.felix.eventadmin.IgnoreTimeout":[
+        "org.apache.felix*",
+        "org.apache.sling*",
+        "com.day*",
+        "com.adobe*"
+      ]
+    },
+    "com.day.crx.security.token.impl.impl.TokenAuthenticationHandler":    {
+      "token.required.attr":"none"
+    },
+    "org.apache.sling.distribution.serialization.impl.vlt.VaultDistributionPackageBuilderFactory~default":    {
+      "aclHandling":"IGNORE",
+      "name":"default",
+      "type":"jcrvlt",
+      "package.filters":[
+        "/home/users|-.*/.tokens",
+        "/home/users|-.*/rep:cache"
+      ],
+      "property.filters":[
+        "/|-^.*/cq:lastReplicated|-^.*/cq:lastReplicatedBy|-^.*/cq:lastReplicationAction"
+      ]
+    },
+    "org.apache.sling.caconfig.management.impl.ConfigurationManagementSettingsImpl":    {
+      "ignorePropertyNameRegex":[
+        "^(jcr|cq):.+$",
+        "^sling:resourceType$"
+      ],
+      "configCollectionPropertiesResourceNames":[
+        "jcr:content",
+        "."
+      ]
+    },
+    "org.apache.sling.commons.log.LogManager":    {
+      "org.apache.sling.commons.log.packagingDataEnabled":true,
+      "org.apache.sling.commons.log.numOfLines:Integer":10000,
+      "org.apache.sling.commons.log.pattern":"{0,date,dd.MM.yyyy HH:mm:ss.SSS} *{4}* [{2}] {3} {5}",
+      "org.apache.sling.commons.log.level":"info",
+      "org.apache.sling.commons.log.file":"${logging.error.file}",
+      "org.apache.sling.commons.log.file.number:Integer":7,
+      "org.apache.sling.commons.log.file.size":"'.'yyyy-MM-dd"
+    },
+    "org.apache.sling.distribution.resources.impl.DistributionServiceResourceProviderFactory~importers":    {
+      "kind":"importer",
+      "provider.roots":[
+        "/libs/sling/distribution/services/importers"
+      ]
+    },
+    "org.apache.aries.jmx.framework.StateConfig":    {
+      "attributeChangeNotificationEnabled":false
+    },
+    "org.apache.sling.i18n.impl.JcrResourceBundleProvider":    {
+      "resource.paths":[
+        ".",
+        "/content"
+      ],
+      "preload.bundles":true
+    },
+    "org.apache.sling.scripting.core.impl.ScriptCacheImpl":    {
+      "org.apache.sling.scripting.cache.additional_extensions":[
+        "js"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~authcert":    {
+      "user.mapping":[
+        "com.adobe.granite.auth.cert=[user-administration-service,group-administration-service]"
+      ]
+    },
+    "org.apache.sling.caconfig.resource.impl.def.DefaultContextPathStrategy":    {
+      "configRefResourceNames":[
+        "jcr:content",
+        "."
+      ],
+      "configRefPropertyNames":"cq:conf"
+    },
+    "org.apache.sling.security.impl.ContentDispositionFilter":    {
+      "sling.content.disposition.paths":[
+        ""
+      ],
+      "sling.content.disposition.excluded.paths":[
+        "/libs/cq/ui/resources/0.html",
+        "/etc/dam/viewers/s7viewers/html5/s7sdkclose.html",
+        "/etc/dam/viewers/s7viewers/html5/CarouselViewer.html",
+        "/etc/dam/viewers/s7viewers/html5/eCatalogViewer.html",
+        "/etc/dam/viewers/s7viewers/html5/BasicVideoViewer.html",
+        "/etc/dam/viewers/s7viewers/html5/BasicZoomViewer.html",
+        "/etc/dam/viewers/s7viewers/html5/ZoomViewer.html",
+        "/etc/dam/viewers/s7viewers/html5/FlyoutViewer.html",
+        "/etc/dam/viewers/s7viewers/html5/SpinViewer.html",
+        "/etc/dam/viewers/s7viewers/html5/VideoViewer.html",
+        "/etc/dam/viewers/s7viewers/html5/MixedMediaViewer.html",
+        "/etc/dam/viewers/s7viewers/html5/InteractiveImage.html",
+        "/etc/dam/viewers/s7viewers/html5/InteractiveVideoViewer.html",
+        "/etc/dam/viewers/s7sdk/2.9/flash/VideoPlayer.swf",
+        "/etc/dam/viewers/s7sdk/dev/flash/VideoPlayer.swf",
+        "/etc/dam/viewers/s7sdk/2.10/flash/VideoPlayer.swf",
+        "/etc/dam/viewers/s7sdk/2.11/flash/VideoPlayer.swf",
+        "/etc/clientlibs/foundation/shared/endorsed/swf/slideshow.swf",
+        "/etc/dam/viewers/s7sdk/3.0/flash/VideoPlayer.swf",
+        "/etc/dam/viewers/s7sdk/3.1/flash/VideoPlayer.swf",
+        "/etc/dam/viewers/s7sdk/3.2/flash/VideoPlayer.swf"
+      ],
+      "sling.content.disposition.all.paths":true
+    },
+    "org.apache.sling.commons.metrics.rrd4j.impl.CodahaleMetricsReporter":    {
+      "datasources":[
+        "DS:granite_PROCESS_CPU_LOAD_PERCENTAGE:GAUGE:300:0:U",
+        "DS:granite_SYSTEM_CPU_LOAD_PERCENTAGE:GAUGE:300:0:U",
+        "DS:granite_DISK_USABLE_SPACE:GAUGE:300:0:U",
+        "DS:granite_FREE_PHYSICAL_MEMORY_SIZE:GAUGE:300:0:U",
+        "DS:granite_HEAP_USED:GAUGE:300:0:U",
+        "DS:granite_HEAP_MAX:GAUGE:300:0:U",
+        "DS:granite_NON_HEAP_USED:GAUGE:300:0:U",
+        "DS:granite_OPEN_FILE_DESCRIPTOR_COUNT:GAUGE:300:0:U",
+        "DS:granite_system.cpu.user:GAUGE:300:0:U",
+        "DS:granite_system.cpu.nice:GAUGE:300:0:U",
+        "DS:granite_system.cpu.system:GAUGE:300:0:U",
+        "DS:granite_system.cpu.idle:GAUGE:300:0:U",
+        "DS:granite_system.cpu.iowait:GAUGE:300:0:U",
+        "DS:granite_process.io.read:COUNTER:300:0:U",
+        "DS:granite_process.io.write:COUNTER:300:0:U",
+        "DS:granite_process.io.disk.read:COUNTER:300:0:U",
+        "DS:granite_process.io.disk.write:COUNTER:300:0:U",
+        "DS:granite_process.io.cancelled.write:COUNTER:300:0:U",
+        "DS:granite_process.memory.faults.minor:COUNTER:300:0:U",
+        "DS:granite_process.memory.faults.major:COUNTER:300:0:U",
+        "DS:granite_process.memory.virtual:GAUGE:300:0:U",
+        "DS:granite_process.memory.resident:GAUGE:300:0:U",
+        "DS:granite_system.memory.total:GAUGE:300:0:U",
+        "DS:granite_system.memory.free:GAUGE:300:0:U",
+        "DS:granite_system.memory.cached:GAUGE:300:0:U",
+        "DS:granite_system.memory.active:GAUGE:300:0:U",
+        "DS:granite_system.memory.inactive:GAUGE:300:0:U",
+        "DS:granite_system.memory.mapped:GAUGE:300:0:U",
+        "DS:granite_system.memory.swap.cached:GAUGE:300:0:U",
+        "DS:granite_system.memory.swap.total:GAUGE:300:0:U",
+        "DS:granite_system.memory.swap.free:GAUGE:300:0:U",
+        "DS:granite_system.network.rx:COUNTER:300:0:U",
+        "DS:granite_system.network.tx:COUNTER:300:0:U",
+        "DS:oak_SESSION_LOGIN_COUNTER:COUNTER:300:0:U",
+        "DS:oak_SESSION_COUNT:GAUGE:300:0:U",
+        "DS:oak_SESSION_WRITE_COUNTER:COUNTER:300:0:U",
+        "DS:oak_OBSERVATION_EVENT_COUNTER:COUNTER:300:0:U",
+        "DS:oak_OBSERVATION_QUEUE_MAX_LENGTH:GAUGE:300:0:U",
+        "DS:oak_/oak_index/cqPageLucene_NRT_UPDATES:COUNTER:300:0:U",
+        "DS:oak_/oak_index/ntBaseLucene_NRT_UPDATES:COUNTER:300:0:U",
+        "DS:oak_/oak_index/slingeventJob_NRT_UPDATES:COUNTER:300:0:U",
+        "DS:oak_/oak_index/versionStoreIndex_NRT_UPDATES:COUNTER:300:0:U",
+        "DS:oak_HYBRID_ADDED:COUNTER:300:0:U",
+        "DS:oak_HYBRID_DROPPED:COUNTER:300:0:U",
+        "DS:oak_HYBRID_EXTERNAL_ADDED:COUNTER:300:0:U",
+        "DS:oak_HYBRID_QUEUE_SIZE:GAUGE:300:0:U",
+        "DS:oak_async.INDEXER_COUNT:COUNTER:300:0:U",
+        "DS:oak_async.INDEXER_NODE_COUNT:COUNTER:300:0:U",
+        "DS:oak_fulltext-async.INDEXER_COUNT:COUNTER:300:0:U",
+        "DS:oak_fulltext-async.INDEXER_NODE_COUNT:COUNTER:300:0:U",
+        "DS:oak_BLOB_DOWNLOAD_COUNT:COUNTER:300:0:U",
+        "DS:oak_BLOB_UPLOAD_COUNT:COUNTER:300:0:U",
+        "DS:oak_COMMIT_QUEUE_SIZE:GAUGE:300:0:U",
+        "DS:oak_COMMITS_COUNT:COUNTER:300:0:U",
+        "DS:oak_JOURNAL_WRITES:COUNTER:300:0:U",
+        "DS:oak_SEGMENT_REPO_SIZE:GAUGE:300:0:U",
+        "DS:oak_SEGMENT_WRITES:COUNTER:300:0:U",
+        "DS:oak_oak.segment.node-deduplication-cache-WRITE.access-count:COUNTER:300:0:U",
+        "DS:oak_oak.segment.node-deduplication-cache-WRITE.miss-count:COUNTER:300:0:U",
+        "DS:oak_oak.segment.string-deduplication-cache-WRITE.access-count:COUNTER:300:0:U",
+        "DS:oak_oak.segment.string-deduplication-cache-WRITE.miss-count:COUNTER:300:0:U",
+        "DS:oak_oak.segment.template-deduplication-cache-WRITE.access-count:COUNTER:300:0:U",
+        "DS:oak_oak.segment.template-deduplication-cache-WRITE.miss-count:COUNTER:300:0:U",
+        "DS:oak_oak.segment.segment-read-bytes:COUNTER:300:0:U",
+        "DS:oak_oak.segment.segment-write-bytes:COUNTER:300:0:U",
+        "DS:oak_CacheStats.BlobStore-MemCache.hit:COUNTER:300:0:U",
+        "DS:oak_CacheStats.BlobStore-MemCache.request:COUNTER:300:0:U",
+        "DS:oak_CacheStats.Document-Documents.hit:COUNTER:300:0:U",
+        "DS:oak_CacheStats.Document-Documents.request:COUNTER:300:0:U",
+        "DS:oak_CacheStats.Document-LocalDiff.hit:COUNTER:300:0:U",
+        "DS:oak_CacheStats.Document-LocalDiff.request:COUNTER:300:0:U",
+        "DS:oak_CacheStats.Document-MemoryDiff.hit:COUNTER:300:0:U",
+        "DS:oak_CacheStats.Document-MemoryDiff.request:COUNTER:300:0:U",
+        "DS:oak_CacheStats.Document-NodeChildren.hit:COUNTER:300:0:U",
+        "DS:oak_CacheStats.Document-NodeChildren.request:COUNTER:300:0:U",
+        "DS:oak_CacheStats.Document-NodeState.hit:COUNTER:300:0:U",
+        "DS:oak_CacheStats.Document-NodeState.request:COUNTER:300:0:U",
+        "DS:oak_CacheStats.Document-PrevDocuments.hit:COUNTER:300:0:U",
+        "DS:oak_CacheStats.Document-PrevDocuments.request:COUNTER:300:0:U",
+        "DS:oak_CacheStats.ExtractedTextCache.hit:COUNTER:300:0:U",
+        "DS:oak_CacheStats.ExtractedTextCache.request:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_JOURNAL_CREATE:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_JOURNAL_QUERY:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_CREATE:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_CREATE_SPLIT:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_CREATE_TIMER:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_CREATE_UPSERT:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_CREATE_UPSERT_TIMER:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_FIND_CACHED:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_FIND_MISSING:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_FIND_PRIMARY:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_FIND_SLAVE:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_FIND_SPLIT:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_QUERY_FIND:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_QUERY_LOCK:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_QUERY_PRIMARY:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_QUERY_SLAVE:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_REMOVE:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_REMOVE_TIMER:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_UPDATE:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_UPDATE_FAILURE:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NODES_UPDATE_RETRY:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NS_BGR_NUM_CHANGES_RATE:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NS_BGW_NUM_WRITE_RATE:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NS_BRANCH_COMMIT_COUNT:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NS_MERGE_BRANCH_COMMIT_COUNT:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NS_MERGE_FAILED_EXCLUSIVE:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NS_MERGE_SUCCESS_COUNT:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NS_MERGE_SUCCESS_EXCLUSIVE:COUNTER:300:0:U",
+        "DS:oak_DOCUMENT_NS_MERGE_SUCCESS_SUSPENDED:COUNTER:300:0:U",
+        "DS:oak_MongoDB.blobs.count:GAUGE:300:0:U",
+        "DS:oak_MongoDB.blobs.size:GAUGE:300:0:U",
+        "DS:oak_MongoDB.blobs.storageSize:GAUGE:300:0:U",
+        "DS:oak_MongoDB.clusterNodes.count:GAUGE:300:0:U",
+        "DS:oak_MongoDB.journal.count:GAUGE:300:0:U",
+        "DS:oak_MongoDB.journal.size:GAUGE:300:0:U",
+        "DS:oak_MongoDB.nodes.count:GAUGE:300:0:U",
+        "DS:oak_MongoDB.nodes.size:GAUGE:300:0:U",
+        "DS:oak_MongoDB.nodes.storageSize:GAUGE:300:0:U",
+        "DS:oak_RevisionGC.DELETE_DOC:COUNTER:300:0:U",
+        "DS:oak_RevisionGC.DELETE_INT_SPLIT_DOC:COUNTER:300:0:U",
+        "DS:oak_RevisionGC.DELETE_LEAF_DOC:COUNTER:300:0:U",
+        "DS:oak_RevisionGC.DELETE_SPLIT_DOC:COUNTER:300:0:U",
+        "DS:oak_RevisionGC.READ_DOC:COUNTER:300:0:U",
+        "DS:oak_RevisionGC.RESET_DELETED_FLAG:COUNTER:300:0:U",
+        "DS:oak_PersistentCache.NodeCache.children.HITS:COUNTER:300:0:U",
+        "DS:oak_PersistentCache.NodeCache.children.REQUESTS:COUNTER:300:0:U",
+        "DS:oak_PersistentCache.NodeCache.diff.HITS:COUNTER:300:0:U",
+        "DS:oak_PersistentCache.NodeCache.diff.REQUESTS:COUNTER:300:0:U",
+        "DS:oak_PersistentCache.NodeCache.local_diff.HITS:COUNTER:300:0:U",
+        "DS:oak_PersistentCache.NodeCache.local_diff.REQUESTS:COUNTER:300:0:U",
+        "DS:oak_PersistentCache.NodeCache.node.HITS:COUNTER:300:0:U",
+        "DS:oak_PersistentCache.NodeCache.node.REQUESTS:COUNTER:300:0:U",
+        "DS:oak_PersistentCache.NodeCache.prev_document.HITS:COUNTER:300:0:U",
+        "DS:oak_PersistentCache.NodeCache.prev_document.REQUESTS:COUNTER:300:0:U",
+        "DS:sling_commons.scheduler.timer.tp.default:COUNTER:300:0:U",
+        "DS:sling_commons.scheduler.timer.tp.oak:COUNTER:300:0:U",
+        "DS:sling_cq.dam.asset.updates:COUNTER:300:0:U",
+        "DS:sling_cq.dam.asset.updates.ongoing:GAUGE:300:0:U",
+        "DS:sling_granite.request.metrics.timer:COUNTER:300:0:U"
+      ]
+    },
+    "org.apache.sling.servlets.resolver.SlingServletResolver":    {
+      "servletresolver.cacheSize:Integer":1000,
+      "servletresolver.servletRoot:Integer":-1,
+      "servletresolver.paths":[
+        "/bin/",
+        "/libs/",
+        "/apps/",
+        "/system/",
+        "/index.servlet",
+        "/login.servlet",
+        "/services/",
+        "/etc/commerce/searchpromote/feed/deleted.servlet",
+        "/graphql/"
+      ],
+      "servletresolver.mountProviders":false
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~distribution-defaultAgentService":    {
+      "user.mapping":[
+        "org.apache.sling.distribution.core:defaultAgentService=[replication-service]",
+        "org.apache.sling.distribution.core=[replication-service]"
+      ]
+    },
+    "org.apache.sling.jcr.base.internal.LoginAdminWhitelist.fragment~sling":    {
+      "whitelist.bundles":[
+        "org.apache.sling.discovery.commons",
+        "org.apache.sling.discovery.base",
+        "org.apache.sling.discovery.oak",
+        "org.apache.sling.extensions.webconsolesecurityprovider",
+        "org.apache.sling.i18n",
+        "org.apache.sling.jcr.base",
+        "org.apache.sling.jcr.jackrabbit.usermanager",
+        "org.apache.sling.jcr.oak.server",
+        "org.apache.sling.jcr.repoinit",
+        "org.apache.sling.resourceresolver",
+        "org.apache.sling.scripting.core",
+        "org.apache.sling.servlets.post"
+      ],
+      "whitelist.name":"sling"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~cugservice":    {
+      "user.mapping":[
+        "com.day.cq.cq-authhandler:requirements=[content-reader-service]"
+      ]
+    },
+    "org.apache.sling.jcr.base.internal.LoginAdminWhitelist.fragment~granite":    {
+      "whitelist.bundles":[
+        "com.adobe.granite.auth.saml",
+        "com.adobe.granite.maintenance.core",
+        "com.adobe.granite.repository",
+        "com.adobe.granite.repository.checker",
+        "com.day.crx.sling.crx-auth-token",
+        "com.day.cq.cq-authhandler",
+        "com.adobe.granite.auth.cert",
+        "day-commons-gfx"
+      ],
+      "whitelist.name":"granite"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~sling.event":    {
+      "user.mapping":[
+        "org.apache.sling.event=[sling-event]",
+        "org.apache.sling.event.dea=[sling-event]"
+      ]
+    },
+    "com.adobe.granite.auth.oauth.impl.helper.ProviderConfigManager":    {
+      "oauth.cookie.max.age":"-1",
+      "oauth.cookie.login.timeout":"-1"
+    },
+    "com.adobe.granite.auth.oauth.impl.helper.ProviderConfigManagerInternal":    {
+      "oauth.cookie.max.age":"-1",
+      "oauth.cookie.login.timeout":"-1"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~security":    {
+      "user.mapping":[
+        "com.adobe.granite.security.installer=[user-administration-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~authoauth":    {
+      "user.mapping":[
+        "com.adobe.granite.auth.oauth=[user-administration-service,group-administration-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~content-hc-service":    {
+      "user.mapping":[
+        "com.adobe.granite.repository.hc.impl:slingContentAccessCheckService=[sling-scripting]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~repository-hc-impl":    {
+      "user.mapping":[
+        "com.adobe.granite.repository.hc.impl=[user-reader-service]"
+      ]
+    },
+    "org.apache.sling.i18n.impl.I18NFilter":    {
+      "service.ranking:Integer":10000,
+      "sling.filter.scope":[
+        "request",
+        "forward",
+        "error"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~authcore":    {
+      "user.mapping":[
+        "org.apache.sling.auth.core=[repository-reader-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~resourceresolver":    {
+      "user.mapping":[
+        "org.apache.sling.resourceresolver:mapping=[repository-reader-service]",
+        "org.apache.sling.resourceresolver:hierarchy=[repository-reader-service]",
+        "org.apache.sling.resourceresolver:observation=[repository-reader-service]",
+        "org.apache.sling.resourceresolver:console=[repository-reader-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~sling.rewriter":    {
+      "user.mapping":[
+        "org.apache.sling.rewriter=[sling-scripting]"
+      ]
+    },
+    "org.apache.felix.hc.core.impl.CompositeHealthCheck~security":    {
+      "filter.tags":[
+        "security"
+      ],
+      "hc.tags":[
+        ""
+      ],
+      "hc.name":"Security Checks",
+      "hc.mbean.name":"securitychecks"
+    },
+    "org.apache.sling.distribution.agent.impl.PrivilegeDistributionRequestAuthorizationStrategyFactory~default":    {
+      "name":"default",
+      "jcrPrivilege":"crx:replicate"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~i18n":    {
+      "user.mapping":[
+        "org.apache.sling.i18n=[repository-reader-service]"
+      ]
+    },
+    "org.apache.sling.distribution.resources.impl.DistributionConfigurationResourceProviderFactory~agents":    {
+      "kind":"agent",
+      "provider.roots":[
+        "/libs/sling/distribution/settings/agents"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~authsaml":    {
+      "user.mapping":[
+        "com.adobe.granite.auth.saml=[authentication-service,truststore-reader-service,user-administration-service,group-administration-service]"
+      ]
+    },
+    "org.apache.felix.hc.generalchecks.DsComponentsCheck~systemready":    {
+      "hc.name":"Required Components",
+      "hc.tags":[
+        "systemstartup",
+        "systemalive",
+        "systemready"
+      ],
+      "components.list":[
+        "com.day.crx.security.token.impl.impl.TokenAuthenticationHandler",
+        "com.day.cq.wcm.core.impl.WCMAdapterFactory",
+        "com.day.cq.workflow.impl.CQWorkflowService",
+        "com.adobe.granite.repository.impl.SlingRepositoryManager",
+        "com.adobe.aem.dam.impl.AssetAdapterFactory",
+        "org.apache.sling.scripting.sightly.impl.engine.SightlyScriptEngineFactory",
+        "org.apache.sling.scripting.sightly.js.impl.JsUseProvider",
+        "org.apache.sling.scripting.jsp.JspScriptEngineFactory"
+      ]
+    },
+    "org.apache.felix.hc.generalchecks.ServicesCheck~systemready":    {
+      "hc.name":"Required Services",
+      "hc.tags":[
+        "systemstartup",
+        "systemready"
+      ],
+      "services.list":[
+        "org.apache.sling.launchpad.api.StartupService",
+        "(&(objectClass=java.util.ResourceBundle)(locale=*))"
+      ]
+    },
+    "org.apache.felix.hc.generalchecks.BundlesStartedCheck~systemready":    {
+      "hc.name":"All bundles are up",
+      "hc.tags":[
+        "systemstartup",
+        "systemalive",
+        "systemready"
+      ]
+    },
+    "org.apache.felix.hc.generalchecks.FrameworkStartCheck":    {
+      "hc.tags":[
+        "systemstartup",
+        "systemalive",
+        "systemready"
+      ]
+    },
+    "org.apache.felix.hc.core.impl.monitor.HealthCheckMonitor~systemready":    {
+      "tags":[
+        "systemalive",
+        "systemready"
+      ],
+      "intervalInSec":"5",
+      "registerHealthyMarkerService":true,
+      "registerUnhealthyMarkerService":true
+    },
+    "org.apache.sling.distribution.agent.impl.PrivilegeDistributionRequestAuthorizationStrategyFactory~privilegeReplicate":    {
+      "name":"privilegeReplicate",
+      "jcrPrivilege":"crx:replicate"
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~distribution":    {
+      "queue.name":"org/apache/sling/distribution/queue/{0}",
+      "queue.topics":"org/apache/sling/distribution/queue/*",
+      "queue.type":"ORDERED",
+      "queue.retries":"-1"
+    },
+    "org.apache.sling.event.impl.jobs.JobConsumerManager":    {
+      "job.consumermanager.whitelist":[
+        "*"
+      ],
+      "job.consumermanager.blacklist":[
+        ""
+      ]
+    },
+    "org.apache.sling.event.impl.jobs.console.InventoryPlugin":    {
+      "felix.inventory.printer.webconsole":true
+    },
+    "org.apache.sling.resource.inventory.impl.ResourceInventoryPrinterFactory~jmx":    {
+      "felix.inventory.printer.title":"JMX Tree",
+      "felix.inventory.printer.name":"jmxresource",
+      "path":"/system/sling/monitoring/mbeans"
+    },
+    "org.apache.sling.caconfig.impl.ConfigurationResolverImpl":    {
+      "configBucketNames":[
+        "settings"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~keystoreservice":    {
+      "user.mapping":[
+        "com.adobe.granite.crypto.keystore=[cryptoservice]"
+      ]
+    },
+    "org.apache.sling.caconfig.resource.impl.def.DefaultConfigurationResourceResolvingStrategy":    {
+      "configCollectionInheritancePropertyNames":[
+        "jcr:content/sling:configCollectionInherit",
+        "jcr:content/mergeList",
+        "mergeList"
+      ],
+      "fallbackPaths":[
+        "/conf/global",
+        "/apps",
+        "/libs"
+      ]
+    },
+    "org.apache.sling.jcr.resourcesecurity.impl.ResourceAccessGateFactory~jmx":    {
+      "jcrPath":"/system/sling/monitoring/mbeans",
+      "path":"^/system/sling/monitoring/mbeans(/(.)*)?"
+    },
+    "org.apache.sling.engine.parameters":    {
+      "sling.default.parameter.encoding":"utf-8"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~contextaware-config-webconsole":    {
+      "user.mapping":[
+        "org.apache.sling.caconfig.impl=[sling-context-aware-config-web-console,content-reader-service,configuration-reader-service]"
+      ]
+    },
+    "org.apache.sling.jcr.resource.internal.JcrResourceResolverFactoryImpl":    {
+      "resource.resolver.map.observation":[
+        "/libs",
+        "/apps",
+        "/content",
+        "/etc",
+        "/conf"
+      ],
+      "resource.resolver.manglenamespaces":true,
+      "resource.resolver.vanitypath.whitelist":[
+        "/apps/",
+        "/libs/",
+        "/content/"
+      ],
+      "resource.resolver.vanitypath.blacklist":[
+        "/content/usergenerated"
+      ],
+      "resource.resolver.searchpath":[
+        "/apps",
+        "/libs"
+      ],
+      "resource.resolver.mapping":[
+        "/:/"
+      ],
+      "resource.resolver.log.unclosed":false
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~jcr-resource":    {
+      "user.mapping":[
+        "org.apache.sling.jcr.resource:validation=[user-reader-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~packagelist-service":    {
+      "user.mapping":[
+        "com.adobe.cq.cq-security-hc:packageListService=[packagelist-service]",
+        "com.adobe.cq.cq-healthcheck:packageListService=[packagelist-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~sling-xss":    {
+      "user.mapping":[
+        "org.apache.sling.xss=[sling-xss]"
+      ]
+    },
+    "com.adobe.granite.csrf.impl.CSRFFilter":    {
+      "filter.safe.user.agents":[
+        "Apache-HttpClient/*",
+        "Jakarta Commons-HttpClient/*",
+        "Jakarta-Commons-VFS",
+        "curl/*",
+        "Wget/*",
+        "WebDAVFS/*",
+        "Microsoft-WebDAV-MiniRedir/*",
+        "Ruby",
+        "Adobe-Campaign/*",
+        "Forms-Mobile *"
+      ],
+      "filter.excluded.paths":[
+        "/libs/dam/gui/content/assets/assetlinkshare",
+        "/content/communities/scorm/RecordResults",
+        "/content/cq:graphql/global/endpoint",
+        "/graphql",
+        "/libs/dam/cfm/headless/endpoints/content/graphql",
+        "/bin/unifiedshell/discovery"
+      ],
+      "filter.methods":[
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "filter.enable.safe.user.agents":false
+    },
+    "org.apache.sling.engine.impl.log.RequestLogger":    {
+      "access.log.enabled":true,
+      "request.log.outputtype:Integer":0,
+      "access.log.output":"log.access",
+      "request.log.output":"log.request",
+      "request.log.enabled":true,
+      "access.log.outputtype:Integer":0
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~monitoringScripts":    {
+      "user.mapping":[
+        "com.adobe.granite.monitoring.core=[monitoringScripts]"
+      ]
+    },
+    "org.apache.sling.xss.impl.XSSFilterImpl":    {
+      "policyPath":"cq/xssprotection/config.xml"
+    },
+    "org.apache.felix.hc.core.impl.servlet.HealthCheckExecutorServlet~systemalive":    {
+      "osgi.http.whiteboard.context.select":"(osgi.http.whiteboard.context.name=org.osgi.service.http)",
+      "servletPath":"/system/alive",
+      "format":"json",
+      "tags":[
+        "systemalive"
+      ],
+      "httpStatusMapping":"WARN:200,TEMPORARILY_UNAVAILABLE:503,CRITICAL:500",
+      "disable.request.configuration":true
+    },
+    "org.apache.felix.hc.core.impl.servlet.HealthCheckExecutorServlet~systemalive-new":    {
+      "osgi.http.whiteboard.context.select":"(osgi.http.whiteboard.context.name=org.osgi.service.http)",
+      "servletPath":"/systemalive",
+      "format":"json",
+      "tags":[
+        "systemalive"
+      ],
+      "httpStatusMapping":"WARN:200,TEMPORARILY_UNAVAILABLE:503,CRITICAL:500",
+      "disable.request.configuration":true
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~sling.discovery":    {
+      "user.mapping":[
+        "org.apache.sling.discovery.commons=[sling-discovery]",
+        "org.apache.sling.discovery.base=[sling-discovery]",
+        "org.apache.sling.discovery.oak=[sling-discovery]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~replication":    {
+      "user.mapping":[
+        "com.day.cq.cq-replication:replicationService=[replication-service]",
+        "com.adobe.granite.distribution.core:replicationService=[replication-service]"
+      ]
+    },
+    "org.apache.felix.hc.core.impl.servlet.HealthCheckExecutorServlet~systemready":    {
+      "osgi.http.whiteboard.context.select":"(osgi.http.whiteboard.context.name=org.osgi.service.http)",
+      "servletPath":"/system/ready",
+      "format":"json",
+      "tags":[
+        "systemready"
+      ],
+      "httpStatusMapping":"WARN:200,TEMPORARILY_UNAVAILABLE:503,CRITICAL:500",
+      "disable.request.configuration":true
+    },
+    "org.apache.felix.hc.core.impl.servlet.HealthCheckExecutorServlet~systemready-new":    {
+      "osgi.http.whiteboard.context.select":"(osgi.http.whiteboard.context.name=org.osgi.service.http)",
+      "servletPath":"/systemready",
+      "format":"json",
+      "tags":[
+        "systemready"
+      ],
+      "httpStatusMapping":"WARN:200,TEMPORARILY_UNAVAILABLE:503,CRITICAL:500",
+      "disable.request.configuration":true
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~observation":    {
+      "user.mapping":[
+        "org.apache.sling.jcr.resource:observation=[repository-reader-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~cryptoservice":    {
+      "user.mapping":[
+        "com.adobe.granite.crypto.jcr=[cryptoservice]"
+      ]
+    },
+    "org.apache.sling.distribution.resources.impl.DistributionServiceResourceProviderFactory~agents":    {
+      "kind":"agent",
+      "provider.roots":[
+        "/libs/sling/distribution/services/agents"
+      ]
+    },
+    "com.adobe.granite.repository.impl.CommitStatsConfig":    {
+      "enabled":true
+    },
+    "org.apache.sling.discovery.oak.Config":    {
+      "connectorPingTimeout":300
+    },
+    "org.apache.sling.commons.mime.internal.MimeTypeServiceImpl":    {
+      "mime.types":[
+        "application/vnd.apple.keynote key",
+        "video/webm webm",
+        "video/x-matroska mkv",
+        "video/dvd vob",
+        "text/vtt vtt",
+        "application/x-indesign-snippet idms"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~security-userproperties":    {
+      "user.mapping":[
+        "com.adobe.granite.security.user:userproperties-service=[security-userproperties-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~asyncjobgranite":    {
+      "user.mapping":[
+        "com.adobe.granite.jobs.async:asyncjobshelper=[granite-async-jobs-service,async-jobs-service]",
+        "com.adobe.granite.jobs.async:asyncjobs-notification-helper=[granite-async-jobs-service,user-reader-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~contexthub-cache-service":    {
+      "user.mapping":[
+        "com.adobe.granite.contexthub.commons:contexthub-cache=[contexthub-cache-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~sling-sitemap":    {
+      "user.mapping":[
+        "org.apache.sling.sitemap:sitemap-reader=[content-reader-service]",
+        "org.apache.sling.sitemap:sitemap-writer=[sitemap-writer-service,content-reader-service]"
+      ]
+    },
+    "org.apache.sling.sitemap.impl.SitemapServlet":    {
+      "sling.servlet.resourceTypes":[
+        "wcm/foundation/components/basicpage/v1/basicpage"
+      ],
+      "sling.servlet.selectors":[
+        "sitemap",
+        "sitemap-index"
+      ],
+      "sling.servlet.extensions":[
+        "xml"
+      ]
+    },
+    "org.apache.sling.sitemap.impl.SitemapGeneratorExecutor":    {
+      "chunkSize":2000
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~slingsitemap":    {
+      "queue.name":"Background Sitemap Generation",
+      "queue.topics":[
+        "org/apache/sling/sitemap/build"
+      ],
+      "queue.type":"UNORDERED",
+      "queue.priority":"MIN",
+      "queue.maxparallel":0.5
+    },
+    "org.apache.sling.commons.threads.impl.DefaultThreadPool.factory~slingsitemap":    {
+      "name":"org-apache-sling-sitemap",
+      "maxPoolSize:Integer":5,
+      "minPoolSize:Integer":0
+    },
+    "com.adobe.granite.metrics.knownerrors.impl.KnownErrorConfiguration":    {
+      "adobeKnown":[
+        "$[env:AEM_ERRORS_DETECTION_KNOWN_ADOBE;default=EXAMPLE-001:some/example/resource/type:com.adobe.this.is.known.Exception]"
+      ],
+      "adobeUnknown":[
+        "$[env:AEM_ERRORS_DETECTION_UNKNOWN_ADOBE;default=EXAMPLE-003:some/other/example/resource/type:com.adobe.this.should.be.a.wide.regexp.Exception]"
+      ]
+    },
+    "com.adobe.granite.repository.impl.SystemUserValidation":    {
+      "warnOnly":true,
+      "validator.id":"com.adobe.granite.repository.impl.SystemUserValidation"
+    },
+    "com.adobe.granite.repository.impl.SystemPrincipalsValidation":    {
+      "warnOnly":true,
+      "validator.id":"com.adobe.granite.repository.impl.SystemPrincipalsValidation"
+    },
+    "com.adobe.aem.addressbook.impl.config.ConfigService":    {
+      "addressbookProdHost":"https://ab.adobe-identity.com",
+      "addressBookStageHost":"https://ab-stg.adobe-identity.com",
+      "imsOrganization":"$[env:imsOrganization;default= ]",
+      "ethosEnvClusterType":"$[env:ETHOS_ENV_CLUSTER_TYPE;default= ]"
+    },
+    "com.adobe.aem.collaborationapi.common.service.EventConfigService":    {
+      "assetsPipelineTopic":"$[env:pipelineTopicAssetEvents;default= ]"
+    },
+    "com.adobe.xmp.worker.files.ncomm.XMPFilesNComm":    {
+      "maxConnections":"4",
+      "requestTimeout":"30000",
+      "maxRequests":"50000",
+      "logDir":"crx-quickstart/logs"
+    },
+    "com.day.cq.dam.core.impl.servlet.GuidLookupFilter":    {
+      "cq.dam.core.guidlookupfilter.enabled":false
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~com.adobe.cq.smartcontent-core":    {
+      "user.mapping":[
+        "com.adobe.cq.smartcontent-core:nlp-reader=[nlp-reader]"
+      ]
+    },
+    "com.adobe.cq.dam.cfm.impl.component.ComponentConfigImpl~cfm":    {
+      "dam.cfm.component.elementsProp":"element",
+      "dam.cfm.component.variationProp":"variation",
+      "dam.cfm.component.fileReferenceProp":"fileReference",
+      "dam.cfm.component.resourceType":"dam/cfm/components/contentfragment"
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~dm-batch":    {
+      "queue.priority":"NORM",
+      "queue.name":"DM batch queue",
+      "queue.topics":"dmJobsTopic/processBatch",
+      "queue.type":"UNORDERED",
+      "queue.retries":"1",
+      "queue.threadPoolSize":"2",
+      "queue.retrydelay":"60000",
+      "queue.preferRunOnCreationInstance":"true",
+      "service.ranking":"1",
+      "queue.maxparallel":"0.5"
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~asyncoperations":    {
+      "queue.priority":"NORM",
+      "queue.name":"Async Operation Default Queue Config",
+      "queue.topics":[
+        "async/move",
+        "async/exportMetadata",
+        "async/importMetadata",
+        "com/adobe/cq/dam/report",
+        "async/delete",
+        "async/remoteassettask",
+        "async/assetsourcingimport"
+      ],
+      "queue.type":"TOPIC_ROUND_ROBIN",
+      "queue.retries":"1",
+      "queue.retrydelay":"60000",
+      "queue.keepJobs":"true",
+      "queue.maxparallel":"0.5"
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~asyncprocess":    {
+      "queue.priority":"NORM",
+      "queue.name":"Async Process Default Queue Config",
+      "queue.topics":[
+        "async/process"
+      ],
+      "queue.type":"ORDERED",
+      "queue.retries":"0",
+      "queue.retrydelay":"2000",
+      "queue.keepJobs":"true",
+      "queue.maxparallel":"1"
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~assetcomputearchive":    {
+      "queue.priority":"NORM",
+      "queue.name":"Asset Compute Archive Async Process Queue Config",
+      "queue.topics":[
+        "async/assetcomputearchive"
+      ],
+      "queue.type":"UNORDERED",
+      "queue.retries":"0",
+      "queue.retrydelay":"2000",
+      "queue.keepJobs":"true",
+      "queue.maxparallel":"8"
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~asyncdownload":    {
+      "queue.priority":"NORM",
+      "queue.name":"Download Archive Async Process Queue Config",
+      "queue.topics":[
+        "async/download"
+      ],
+      "queue.type":"UNORDERED",
+      "queue.retries":"0",
+      "queue.retrydelay":"2000",
+      "queue.keepJobs":"true",
+      "queue.maxparallel":"2"
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~bulkimport":    {
+      "queue.priority":"NORM",
+      "queue.name":"Bulk Import Default Queue Config",
+      "queue.topics":[
+        "async/bulkimport"
+      ],
+      "queue.type":"ORDERED",
+      "queue.retries":"3",
+      "queue.retrydelay":"2000",
+      "queue.keepJobs":"true",
+      "queue.maxparallel":"1"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~dam":    {
+      "user.mapping":[
+        "com.day.cq.dam.cq-dam-core:configreader=[configuration-reader-service,dam-reader-service]",
+        "com.day.cq.dam.cq-dam-core:activitypurgesrv=[activitypurgesrv]",
+        "com.day.cq.dam.cq-dam-core:teammanager=[dam-teammgr-service,group-reader-service,user-reader-service]",
+        "com.day.cq.dam.cq-dam-core:resourcecollectionservice=[resourcecollectionservice,group-reader-service,user-reader-service]",
+        "com.day.cq.dam.cq-dam-core:pathbuilder=[targetservice]",
+        "com.day.cq.dam.cq-dam-core:assetmove=[dam-writer-service]",
+        "com.day.cq.dam.cq-dam-core:folderpreviewupdatehelper=[dam-writer-service]",
+        "com.day.cq.dam.cq-dam-core:eventrecorderhelper=[dam-activitywriter-service,dam-reader-service,user-reader-service]",
+        "com.day.cq.dam.cq-dam-core:eventlistenerhelper=[dam-writer-service]",
+        "com.day.cq.dam.cq-dam-core:commentmonitorhelper=[dam-writer-service]",
+        "com.day.cq.dam.cq-dam-core:usermanagerhelper=[dam-teammgr-service,group-reader-service,user-reader-service]",
+        "com.adobe.cq.cq-dam-index-builder:damindexservice=[index-admin]",
+        "com.day.cq.dam.cq-dam-similaritysearch:eventlistenerhelper=[dam-writer-service]",
+        "com.day.cq.dam.cq-dam-similaritysearch:similaritysearchservice=[dam-update-service,tag-validation-service]",
+        "com.day.cq.dam.cq-dam-core:assetidhelper=[dam-update-service]",
+        "com.day.cq.dam.cq-dam-core:expirymonitoringhelper=[dam-writer-service]",
+        "com.day.cq.dam.cq-dam-core:assetreplicationhelper=[dynamic-media-replication]",
+        "com.day.cq.dam.cq-dam-core:notificationhelper=[notification-service,user-reader-service]",
+        "com.day.cq.dam.cq-dam-core:omnisearch-service=[omnisearch-service]",
+        "com.day.cq.dam.cq-dam-core:chunkdeleteservice=[dam-update-service]",
+        "com.day.cq.dam.cq-dam-core:streameduploadservice=[dam-update-service]",
+        "com.day.cq.dam.cq-dam-asset-usage:assetusagetrackeruser=[assetusagetrackeruser,dam-writer-service]",
+        "com.day.cq.dam.cq-dam-indesign:idsprocessor=[idsjobprocessor,dam-writer-service]",
+        "com.day.cq.dam.cq-dam-core:linkshareservice=[assetlinkshareservice,dam-reader-service]",
+        "com.day.cq.dam.cq-dam-core:subassetdownloadservice=[assetdownloadservice]",
+        "com.day.cq.dam.cq-dam-core:translation-job=[translation-job-service]",
+        "com.day.cq.dam.cq-dam-core:formitemsextractionhelper=[dam-formitemseditor-service]",
+        "com.adobe.cq.cq-dam-mac-sync:dam-replication=[dam-replication-service,group-reader-service,user-reader-service,dynamicmedia-config-service]",
+        "com.adobe.cq.cq-dam-mac-sync-helper:dam-replication-helper=[dam-replication-service,group-reader-service,user-reader-service,dynamicmedia-config-service]",
+        "com.day.cq.dam.cq-dam-commons:namespaceupdatehelper=[namespace-mgmt-service]",
+        "com.day.cq.dam.cq-dam-core:missingmetadatanotificationservice=[assetusagetrackeruser,dam-writer-service]",
+        "com.day.cq.dam.cq-dam-commons:resourcecollectionservice=[resourcecollectionservice]",
+        "com.day.cq.dam.cq-dam-core:assetreporthelper=[dam-reports-manager-service,dam-reader-service]",
+        "com.day.cq.dam.cq-dam-core:metadataexporthelper=[dam-metadata-export-service]",
+        "com.day.cq.dam.cq-dam-core:asyncjobshelper=[async-jobs-service]",
+        "com.day.cq.dam.cq-dam-commons:metadataschemareader=[dam-replication-service,dam-formitemseditor-service]",
+        "com.day.cq.dam.cq-dam-entitlement:indesign-feature-service=[idsjobprocessor]",
+        "com.day.cq.dam.cq-dam-entitlement:scene7-feature-service=[scene7-config-service]",
+        "com.adobe.cq.dam.cq-dynamicmedia-core:scene7-feature-service=[scene7-config-service]",
+        "com.adobe.cq.dam.cq-dam-processor-nui:createrendition=[dam-writer-service,content-reader-service,nui-process-service,workflow-process-service]",
+        "com.adobe.cq.dam.cq-dam-processor-nui:workflow-runner=[dam-writer-service,content-reader-service,workflow-process-service]",
+        "com.adobe.cq.dam.cq-dam-processor-dm:dm-upload-service=[dam-writer-service,scene7-config-service]",
+        "com.day.cq.dam.cq-dam-core:adaptassetfoldersmetadata=[idsjobprocessor]",
+        "com.adobe.granite.acp.platform:index-admin=[index-admin]",
+        "com.adobe.dam.cq-dam-cfm-impl:replicationService=[replication-service]",
+        "com.adobe.dam.cq-dam-cfm-impl:referenceProcessingService=[reference-processing-service,content-reader-service,dam-writer-service]",
+        "com.adobe.dam.cq-dam-cfm-impl:configuration-reader-service=[configuration-reader-service]",
+        "com.adobe.dam.cq-dam-cfm-impl:omnisearch-service=[omnisearch-service]",
+        "com.day.cq.dam.cq-dam-core:teamcleanup=[dam-teammgr-service,group-reader-service,user-reader-service,content-reader-service,content-acreader-service]",
+        "com.day.cq.dam.cq-dam-download:async-download-storage=[download-storage-service,configuration-reader-service,dam-reader-service]",
+        "com.day.cq.dam.cq-dam-download:async-download-notifications=[taskmanagement-service]",
+        "com.day.cq.dam.cq-dam-download:async-download-service=[dam-reader-service]",
+        "com.day.cq.dam.cq-dam-archive:async-archive-service=[dam-reader-service]",
+        "com.day.cq.dam.cq-dam-commons:migrationsvc=[dam-replication-service,workflow-process-service]",
+        "com.day.cq.dam.cq-dam-commons:dam-config-reader-service=[dam-reader-service,configuration-reader-service]",
+        "com.day.cq.dam.cq-dam-core:dameventdispatcher=[dam-reader-service]",
+        "com.day.cq.dam.cq-dam-core:cloudsourcing=[dam-writer-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~remotedam":    {
+      "user.mapping":[
+        "com.adobe.cq.remotedam.cq-remotedam-client-core:mountpointmanager=[dam-replication-service,user-reader-service]",
+        "com.adobe.cq.remotedam.cq-remotedam-client-core:assetimporter=[dam-writer-service,configuration-reader-service,replication-service,namespace-mgmt-service]",
+        "com.adobe.cq.remotedam.cq-remotedam-client-core:presetimporter=[repository-reader-service,scene7-config-writer-service]",
+        "com.adobe.cq.remotedam.cq-remotedam-commons:eventjournalservice=[remote-ref-cache-user]",
+        "com.adobe.cq.remotedam.cq-remotedam-server-core:remoterefcacheserviceuser=[configuration-reader-service,remote-ref-cache-user]",
+        "com.adobe.cq.remotedam.cq-remotedam-server-core:lsconfigreader=[configuration-reader-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~assetsourcing":    {
+      "user.mapping":[
+        "com.day.cq.dam.cq-dam-asset-sourcing:assetimportservice=[replication-service,dam-replication-service]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~unzip":    {
+      "queue.priority":"MIN",
+      "queue.name":"DAM Unzip",
+      "queue.topics":"com/day/cq/dam/unzip",
+      "queue.type":"ORDERED",
+      "queue.retries":"0",
+      "queue.keepJobs":"true",
+      "queue.maxparallel":"1"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~com.adobe.dam.cq-dam-cfm-impl":    {
+      "user.mapping":[
+        "com.adobe.dam.cq-dam-cfm-impl:replicationService=[replication-service]",
+        "com.adobe.dam.cq-dam-cfm-impl:referenceProcessingService=[reference-processing-service,content-reader-service,dam-writer-service]",
+        "com.adobe.dam.cq-dam-cfm-impl:omnisearch-service=[omnisearch-service]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~colllectionupdate":    {
+      "queue.priority":"MIN",
+      "queue.name":"Collection update on asset move and delete",
+      "queue.topics":"com/adobe/cq/collection/update/job",
+      "queue.type":"ORDERED",
+      "queue.retries":"1",
+      "queue.retrydelay":"60000",
+      "queue.maxparallel":"1"
+    },
+    "com.day.cq.dam.ids.impl.IDSJobProcessor":    {
+      "enable.multisession":"false",
+      "ids.cc.enable":"true",
+      "enable.retry":"true",
+      "enable.retry.scripterror":"true",
+      "externalizer.domain.cqhost":"idsproxy",
+      "externalizer.domain.http":"idsproxy",
+      "enable.manifest.validation":"true",
+      "enable.direct.asset.download":"true"
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~ids":    {
+      "queue.priority":"MIN",
+      "queue.name":"IDS Processing Queue",
+      "queue.topics":"dam/proxy/ids/job/*",
+      "queue.type":"ORDERED",
+      "queue.retries":"5",
+      "queue.retrydelay":"60000",
+      "queue.maxparallel":"1"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~nui-process":    {
+      "user.mapping":[
+        "com.adobe.cq.adobeims.core:Asset Compute=[nui-process-service]",
+        "com.adobe.cq.dam.cq-dam-processor-nui:nuiprocess=[nui-process-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~smarttags":    {
+      "user.mapping":[
+        "com.adobe.cq.adobeims.core:Smart Tags=[dam-update-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~bp":    {
+      "user.mapping":[
+        "com.adobe.cq.adobeims.core:Adobe Brand Portal=[bp-imsconfig-service]",
+        "com.adobe.granite.replication.core=[bp-imsconfig-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~bp-cloudservice":    {
+      "user.mapping":[
+        "com.adobe.bp.bp-cloudservice:dam-replication-helper=[dam-replication-service,group-reader-service,user-reader-service,dynamicmedia-config-service]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~cfm":    {
+      "queue.priority":"MIN",
+      "queue.name":"Content Fragment Queue",
+      "queue.topics":[
+        "dam/cfm/importcleanup"
+      ],
+      "queue.type":"UNORDERED",
+      "queue.retries":"10",
+      "queue.keepJobs":"true",
+      "queue.maxparallel":"2"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~stock-integration":    {
+      "user.mapping":[
+        "com.adobe.cq.adobeims.core:Adobe Stock=[stock-imsconfig-service]",
+        "com.day.cq.dam.cq-dam-stock-integration:Adobe Stock=[stock-imsconfig-service]",
+        "com.day.cq.dam.cq-dam-stock-integration:omnisearch-service=[omnisearch-service]"
+      ]
+    },
+    "com.adobe.granite.auth.ims.impl.IMSTokenValidatorImpl~imsconsole-nui-process-service":    {
+      "auth.token.validator.type":"imsconsole-nui-process-service",
+      "auth.token.validator.leeway.fractional":12
+    },
+    "com.adobe.aem.graphql.sites.adapters.sling.DefaultDataFetcher":    {
+      "ignoredFieldValues":"$[env:graphqlCFFetcherIgnoredFieldValues]"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~bpdistribution":    {
+      "user.mapping":[
+        "com.adobe.bp.bp-distribution:bpdistributionservice=[replication-service]"
+      ]
+    },
+    "com.day.cq.dam.commons.deployment.impl.DeploymentDetectorImpl":    {
+      "deployment.type":"SKYLINE"
+    },
+    "com.adobe.cq.dam.processor.nui.impl.workflow.AssetProcessorProcess":    {
+      "enabled":true
+    },
+    "com.adobe.aem.repoapi.events.RepositoryEventConfigService":    {
+      "assetsPipelineTopic":"$[env:pipelineTopicAssetEvents;default= ]",
+      "assetsPipelineUrl":"$[env:pipelineUrl;default= ]"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~repoapi":    {
+      "user.mapping":[
+        "com.adobe.aem.repoapi:async-operations=[dam-writer-service,async-jobs-service]",
+        "com.adobe.aem.repoapi:content-acreader=[dam-reader-service,content-acreader-service]",
+        "com.adobe.aem.repoapi:collection-service=[resourcecollectionservice]",
+        "com.adobe.aem.repoapi:namespaceupdatehelper=[namespace-mgmt-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~mcm-campaign":    {
+      "user.mapping":[
+        "com.day.cq.mcm.cq-mcm-campaign:campaign-cloudservice=[campaign-cloudservice]",
+        "com.day.cq.mcm.cq-mcm-campaign:campaign-property-modification-service=[campaign-property-modification-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~cs-scripttags":    {
+      "user.mapping":[
+        "com.adobe.cq.cloud-config.core:cloudconfig-scripttags=[cloudconfig-scripttags,content-reader-service]",
+        "com.adobe.cq.cloud-config.core:replication-service=[replication-service]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~dx-setup-automation":    {
+      "queue.priority":"NORM",
+      "queue.name":"Integration with DX Solutions",
+      "queue.topics":[
+        "com/adobe/aem/dx/setup/automation/jobs/async/integration"
+      ],
+      "queue.type":"ORDERED",
+      "queue.retries":"15",
+      "queue.retrydelay":"60000",
+      "queue.keepJobs":"true"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~dx-setup-automation":    {
+      "user.mapping":[
+        "com.adobe.aem.com.adobe.aem.dx.setup.automation:Adobe Launch=[dtm-reactor-imsconfig-service]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~dm-publish":    {
+      "queue.priority":"NORM",
+      "queue.name":"DM Publish queue",
+      "queue.topics":[
+        "dam/scene7/asset/activation"
+      ],
+      "queue.type":"UNORDERED",
+      "queue.retries":"2",
+      "queue.retrydelay":"60000",
+      "queue.maxparallel:Integer":10
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~scene7-sync":    {
+      "queue.priority":"NORM",
+      "queue.name":"Scene7 Synchronization",
+      "queue.maxparallel:Integer":1,
+      "queue.topics":[
+        "com/adobe/cq/dam/dmassetreplicateonmodify"
+      ],
+      "queue.retries:Integer":10,
+      "queue.preferRunOnCreationInstance":false,
+      "queue.threadPoolSize:Integer":0,
+      "queue.retrydelay":2000,
+      "service.ranking:Integer":0,
+      "queue.type":"ORDERED",
+      "queue.keepJobs":false
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~dminitialsetup":    {
+      "queue.priority":"NORM",
+      "queue.name":"DM Initial Setup Async Operation Queue Config",
+      "queue.topics":[
+        "async/dminitialsetup"
+      ],
+      "queue.type":"ORDERED",
+      "queue.retries":"1",
+      "queue.retrydelay":"60000",
+      "queue.keepJobs":"true",
+      "queue.maxparallel":"1"
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~smartcrop-sync":    {
+      "queue.priority":"NORM",
+      "queue.name":"Smart Crop Sync Queue",
+      "queue.topics":"com/adobe/cq/dam/scene7/smartcrop/sync",
+      "queue.type":"ORDERED",
+      "queue.retries":"2",
+      "queue.retrydelay":"60000",
+      "queue.preferRunOnCreationInstance":"true",
+      "queue.maxparallel":"1"
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~upgradetools-assets-updater":    {
+      "queue.priority":"NORM",
+      "queue.name":"Upgrade Tools Assets Updater Default Queue Config",
+      "queue.topics":"async/assetsupdate",
+      "queue.type":"ORDERED",
+      "queue.retries":"3",
+      "queue.retrydelay":"2000",
+      "queue.keepJobs":"true",
+      "queue.maxparallel":"1"
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~upgradetools-image-presets-import":    {
+      "queue.priority":"NORM",
+      "queue.name":"Upgrade Tools Image Presets Import Default Queue Config",
+      "queue.topics":"async/imagepresetsimport",
+      "queue.type":"ORDERED",
+      "queue.retries":"3",
+      "queue.retrydelay":"2000",
+      "queue.keepJobs":"true",
+      "queue.maxparallel":"1"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~dynamicmedia":    {
+      "user.mapping":[
+        "com.adobe.cq.dam.cq-dynamicmedia-core:dynamicmediaconfigservice=[dynamicmedia-config-service,dam-writer-service,version-manager-service]",
+        "com.adobe.cq.dam.cq-dynamicmedia-core:s7damconfigservice=[s7dam-config-service]",
+        "com.adobe.cq.dam.cq-dynamicmedia-core:scene7-asset-reader-service=[dam-reader-service,dynamicmedia-config-service,scene7-config-service]",
+        "com.adobe.cq.dam.cq-dynamicmedia-core:scene7-asset-writer-service=[dam-writer-service,dynamicmedia-config-service]",
+        "com.adobe.cq.dam.cq-dynamicmedia-core:scene7configservice=[scene7-config-service]",
+        "com.adobe.cq.dam.cq-dynamicmedia-core:youtubeaccountauthenticator=[youtube-authenticator-user,dam-writer-service,version-manager-service,dam-replication-service]",
+        "com.adobe.cq.dam.cq-dynamicmedia-core:workflowservice=[workflow-service]",
+        "com.adobe.cq.dam.cq-dynamicmedia-core:omnisearch-service=[omnisearch-service]",
+        "com.adobe.cq.dam.cq-dynamicmedia-core:s7-config-writer-service=[scene7-config-writer-service]",
+        "com.day.cq.dam.cq-scene7-core:dynamicmediaconfigservice=[dynamicmedia-config-service,dam-writer-service]",
+        "com.day.cq.dam.cq-scene7-core:scene7configservice=[scene7-config-service]",
+        "com.day.cq.dam.cq-scene7-core:ips-jobs-journal-service=[workflow-process-service,dynamicmedia-config-service]",
+        "com.day.cq.dam.cq-scene7-core:s7-config-writer-service=[scene7-config-writer-service]",
+        "com.day.cq.dam.cq-scene7-core:scene7-asset-reader-service=[dam-reader-service,dynamicmedia-config-service,scene7-config-service]",
+        "com.day.cq.dam.cq-scene7-core:scene7-asset-writer-service=[dam-writer-service,dynamicmedia-config-service,workflow-process-service]",
+        "com.adobe.cq.dam.cq-scene7-migrator:scene7configservice=[scene7-config-service]",
+        "org.apache.sling.scripting.core:scene7configservice=[scene7-config-service]",
+        "com.adobe.cq.dam.upgradetools.aem.cq-dam-upgradetools-aem-core:scene7-asset-writer-service=[dam-writer-service,scene7-config-writer-service]"
+      ]
+    },
+    "com.day.cq.dam.scene7.impl.Scene7DamChangeEventListener":    {
+      "cq.dam.scene7.damchangeeventlistener.enabled":false
+    },
+    "com.day.cq.dam.scene7.impl.Scene7ConfigurationEventListener":    {
+      "cq.dam.scene7.configurationeventlistener.enabled":"true"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~cq-experience-fragments":    {
+      "user.mapping":[
+        "com.adobe.cq.cq-experience-fragments:omnisearch-service=[omnisearch-service]",
+        "com.adobe.cq.cq-experience-fragments:target=[targetservice]",
+        "com.adobe.cq.cq-experience-fragments:experience-fragments-service=[experience-fragments-service]",
+        "com.adobe.cq.cq-experience-fragments:replicationService=[replication-service]",
+        "com.adobe.cq.cq-experience-fragments:referenceProcessingService=[reference-processing-service,content-reader-service,dam-writer-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~inbox-content":    {
+      "user.mapping":[
+        "com.adobe.cq.inbox.cq-inbox=[omnisearch-service]",
+        "com.adobe.cq.inbox.cq-inbox:inboxtype-reader=[repository-reader-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~target":    {
+      "user.mapping":[
+        "com.adobe.cq.cq-target-integration:target=[targetservice,configuration-reader-service]"
+      ]
+    },
+    "com.day.cq.analytics.testandtarget.impl.PushAuthorCampaignPageListener":    {
+      "cq.analytics.testandtarget.pushauthorcampaignpagelistener.enabled":"false"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~analytics":    {
+      "user.mapping":[
+        "com.adobe.cq.cq-analytics-integration:analytics=[analyticsservice]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~targeted-content":    {
+      "user.mapping":[
+        "com.day.cq.cq-personalization:targeted-content=[campaign-reader]",
+        "com.day.cq.cq-personalization:personalization-service=[content-writer-service,sling-scripting]",
+        "com.day.cq.cq-personalization:omnisearch-service=[omnisearch-service]",
+        "com.day.cq.cq-personalization:target-configuration-reader-service=[targetservice,configuration-reader-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~dtm-reactor-adobeims":    {
+      "user.mapping":[
+        "com.adobe.cq.adobeims.core:Adobe Launch=[dtm-reactor-imsconfig-service]",
+        "com.adobe.cq.cq-analytics-integration:Adobe Launch=[dtm-reactor-imsconfig-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~analytics-adobeims":    {
+      "user.mapping":[
+        "com.adobe.cq.adobeims.core:Adobe Analytics=[analytics-imsconfig-service]",
+        "com.adobe.cq.cq-analytics-integration:Adobe Analytics=[analytics-imsconfig-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~target-adobeims":    {
+      "user.mapping":[
+        "com.adobe.cq.adobeims.core:Adobe Target=[target-imsconfig-service]",
+        "com.adobe.cq.cq-target-integration:Adobe Target=[target-imsconfig-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~analytics-content-updater":    {
+      "user.mapping":[
+        "com.adobe.cq.cq-analytics-integration:content-updater=[analytics-content-updater-service,configuration-reader-service,statistics-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~dtm-reactor":    {
+      "user.mapping":[
+        "com.adobe.cq.dtm-reactor.core:cloudconfig-scripttags=[cloudconfig-scripttags,content-reader-service]",
+        "com.adobe.cq.dtm-reactor.core:dtm-reactor-service=[dtm-reactor-service,configuration-reader-service,workflow-service]",
+        "com.adobe.cq.dtm-reactor.ui:dtm-reactor-service=[dtm-reactor-service,workflow-service]",
+        "com.adobe.cq.dtm-reactor.core:Adobe Launch=[dtm-reactor-imsconfig-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~targetrecs-deleted-listener":    {
+      "user.mapping":[
+        "com.adobe.cq.cq-targetrecommendations:deleted-products-listener=[recs-deleted-products-listener-service,content-reader-service]"
+      ]
+    },
+    "org.apache.sling.jcr.base.internal.LoginAdminWhitelist.fragment~cq-integrations":    {
+      "whitelist.bundles":[
+        "com.adobe.cq.cq-searchpromote-integration"
+      ],
+      "whitelist.name":"cq-integrations"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~cq-searchpromote":    {
+      "user.mapping":[
+        "com.adobe.cq.cq-searchpromote-integration=[searchpromote-service]"
+      ]
+    },
+    "com.day.cq.analytics.sitecatalyst.impl.SitecatalystHttpClientImpl":    {
+      "tokenbypasssecret":"MmD2*Oafei",
+      "proxyusersecret":"MmD2*Oafei",
+      "applicationkey":"a1729166-7b52-2914-f15b-3834a2e118aa"
+    },
+    "com.day.cq.analytics.impl.BundleContentUpdater":    {
+      "enabled":false
+    },
+    "com.adobe.cq.account.api.AccountManagementService":    {
+      "cq.accountmanager.config.resetpwdrequest.mail":"requestreset",
+      "cq.accountmanager.token.validity.period":600,
+      "cq.accountmanager.config.createaccountrequest.mail":"create"
+    },
+    "org.apache.sling.hc.support.DefaultLoginsHealthCheck~1":    {
+      "logins":[
+        "admin:admin",
+        "author:author"
+      ],
+      "hc.tags":[
+        "security",
+        "logins",
+        "production"
+      ],
+      "hc.name":"Default logins are disabled",
+      "hc.mbean.name":"Default logins"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~spellchecker":    {
+      "user.mapping":[
+        "com.day.cq.cq-spellchecker=[spellchecker-service]"
+      ]
+    },
+    "com.day.cq.widget.impl.WidgetExtensionProviderImpl":    {
+      "extendable.widgets":[
+        "contentfinder",
+        "workflow-inbox"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~audit":    {
+      "user.mapping":[
+        "com.day.cq.cq-audit=[audit-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~account":    {
+      "user.mapping":[
+        "com.adobe.cq.cq-account:account-management-service=[account-manager,content-reader-service,group-reader-service,user-administration-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~statistics":    {
+      "user.mapping":[
+        "com.day.cq.cq-statistics=[statistics-service,content-reader-service]"
+      ]
+    },
+    "org.apache.sling.jcr.base.internal.LoginAdminWhitelist.fragment~cq-platform":    {
+      "whitelist.bundles":[
+        "com.day.cq.cq-security"
+      ],
+      "whitelist.name":"cq-platform"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~scheduled-exporter-service":    {
+      "user.mapping":[
+        "com.adobe.cq.cq-scheduled-exporter=[scheduled-exporter-service]"
+      ]
+    },
+    "com.day.cq.rewriter.linkchecker.impl.LinkCheckerImpl":    {
+      "service.special_link_patterns":"",
+      "service.special_link_prefix":[
+        "javascript:",
+        "data:",
+        "mailto:",
+        "#",
+        "<!--",
+        "${"
+      ],
+      "service.bad_link_tolerance_interval":48,
+      "service.check_override_patterns":[
+        "^system/"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~contentsync-service":    {
+      "user.mapping":[
+        "com.day.cq.cq-content-sync=[contentsync-service,content-reader-service,sling-scripting]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~replication":    {
+      "queue.name":"com/day/cq/replication/job/{0}",
+      "queue.topics":"com/day/cq/replication/job/*",
+      "queue.type":"ORDERED",
+      "queue.retries":-1
+    },
+    "com.adobe.cq.security.hc.packages.impl.ExampleContentHealthCheck":    {
+      "example_packages":[
+        "cq-geometrixx:name:You can uninstall all the Geometrixx content packages by uninstalling the cq-geometrixx-all-pkg via the Package Manager",
+        "adobe/aem6/sample:group:See https://www.adobe.com/go/aem6_4_docs_security_example_en for more information on how to uninstall sample content"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~ch-config-reader":    {
+      "user.mapping":[
+        "com.adobe.granite.contexthub.commons=[contexthub-conf-reader]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~cq-workflow":    {
+      "user.mapping":[
+        "com.day.cq.workflow.cq-workflow-console=[workflow-service]",
+        "com.day.cq.workflow.cq-workflow-impl:workflow=[workflow-service]",
+        "com.day.cq.workflow.cq-workflow-impl:workflow-user=[user-reader-service,group-reader-service]",
+        "com.day.cq.workflow.cq-workflow-impl:repo-reader=[repository-reader-service]"
+      ]
+    },
+    "com.day.cq.commons.impl.ExternalizerImpl":    {
+      "externalizer.domains":[
+        "local $[env:AEM_EXTERNALIZER_LOCAL;default=http://localhost:4502]",
+        "author $[env:AEM_EXTERNALIZER_AUTHOR;default=http://localhost:4502]",
+        "publish $[env:AEM_EXTERNALIZER_PUBLISH;default=http://localhost:4503]",
+        "preview $[env:AEM_EXTERNALIZER_PREVIEW;default=http://localhost:4503]"
+      ]
+    },
+    "com.day.cq.replication.impl.ReplicationContentFactoryProviderImpl":    {
+      "replication.content.useFileStorage":false
+    },
+    "com.adobe.granite.optout.impl.OptOutServiceImpl":    {
+      "optout.whitelist.cookies":[
+        "cq-show-clientcontext",
+        "cq-scrollpos",
+        "cq-sk-collapsed",
+        "login-token",
+        "ys-cq-siteadmin-tree",
+        "ys-cq-damadmin-tree",
+        "ys-cq-collabadmin-tree",
+        "ys-cq-miscadmin-tree",
+        "ys-cq-tagadmin",
+        "ys-cq-cf-clipboard",
+        "ys-cq-cf-tabpanel",
+        "SessionPersistence",
+        "wcmmode",
+        "CommercePersistence",
+        "cq-authoring-mode"
+      ],
+      "optout.cookies":[
+        "cq-opt-out",
+        "omniture_optout"
+      ]
+    },
+    "org.apache.felix.hc.generalchecks.HttpRequestsCheck~1":    {
+      "hc.tags":[
+        "content",
+        "startup"
+      ],
+      "hc.name":"Well-known request paths return expected HTTP status",
+      "hc.mbean.name":"Initial content requests",
+      "requests":[
+        "libs/cq/core/content/welcome.html",
+        "communities.html",
+        "projects.html",
+        "sites.html/content",
+        "assets.html/content/dam",
+        "tools.html",
+        "mcmadmin",
+        "libs/launches/content/admin.html",
+        "manuscriptsadmin",
+        "inbox",
+        "libs/cq/taskmanagement/content/taskmanager.html",
+        "useradmin",
+        "tagging",
+        "miscadmin",
+        "etc/replication.html",
+        "libs/cq/workflow/content/console.html",
+        "libs/cq/core/content/tools/cloudservices.html",
+        "libs/granite/topology/content/view.html",
+        "libs/granite/backup/content/admin.html",
+        "libs/granite/security/content/useradmin.html",
+        "libs/granite/security/content/groupadmin.html"
+      ]
+    },
+    "com.adobe.cq.hc.ContentPackagesHealthCheck~1":    {
+      "hc.tags":[
+        "packages",
+        "content",
+        "startup"
+      ],
+      "hc.name":"Check for default AEM content packages",
+      "hc.mbean.name":"AEM content packages",
+      "package.names":[
+        "com.adobe.granite.ui.coralui3",
+        "com.adobe.granite.activitystreams.content",
+        "com.adobe.granite.asset.content",
+        "com.adobe.granite.backup.content",
+        "com.adobe.granite.cluster.content",
+        "com.adobe.granite.datavisualization.content",
+        "com.adobe.granite.monitoring.content",
+        "com.adobe.granite.platform.clientlibs",
+        "com.adobe.granite.platform.content",
+        "com.adobe.granite.platform.i18n",
+        "com.adobe.granite.platform.login",
+        "com.adobe.granite.platform.users",
+        "com.adobe.granite.platform.welcome",
+        "com.adobe.granite.replication.content",
+        "com.adobe.granite.security.content",
+        "com.adobe.granite.taskmanagement.content",
+        "com.adobe.granite.topology.content",
+        "com.adobe.granite.ui.content",
+        "com.adobe.granite.ui.legacy",
+        "com.adobe.granite.workflow.content",
+        "cq-cloudservices-content",
+        "cq-commerce-content",
+        "cq-compat-content",
+        "cq-content",
+        "cq-dam-content",
+        "cq-dashboards-content",
+        "cq-foundation-content",
+        "cq-i18n-content",
+        "cq-launches-content",
+        "cq-mcm-content",
+        "cq-platform-content",
+        "cq-projects-content",
+        "com.adobe.coralui.rte-cq5",
+        "cq-ui-classic-content",
+        "cq-ui-touch-optimized-content",
+        "cq-wcm-content"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~translation-config":    {
+      "user.mapping":[
+        "com.adobe.granite.translation.core:translation-config=[translation-config-service]",
+        "com.adobe.granite.translation.connector.msft.core:translation-config=[translation-config-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~platform":    {
+      "user.mapping":[
+        "com.day.cq.cq-rewriter:linkstorage-service=[linkstorage-service]",
+        "com.day.cq.cq-rewriter:fontconfig-service=[fontconfig-service]",
+        "com.day.cq.cq-rewriter:repository-reader-service=[repository-reader-service]",
+        "com.day.cq.cq-polling-importer:polling-importer-service=[polling-importer-service,content-reader-service]",
+        "com.day.cq.cq-replication-audit:repository-reader-service=[repository-reader-service]",
+        "com.day.cq.cq-mailer:mailer-config-service=[mailer-config-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~tagging":    {
+      "user.mapping":[
+        "com.day.cq.cq-tagging:tag-garbage-collection=[tag-garbage-collection-service,content-reader-service]",
+        "com.day.cq.cq-tagging:tag-validation=[tag-validation-service,content-reader-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~projects":    {
+      "user.mapping":[
+        "com.adobe.cq.com.adobe.cq.projects.core=[projects-service]",
+        "com.adobe.cq.com.adobe.cq.projects.core:purge=[projects-purge-service]",
+        "com.adobe.cq.com.adobe.cq.projects.core:omnisearch-service=[omnisearch-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~cq-ref-update-processor-api":    {
+      "user.mapping":[
+        "com.adobe.cq.cq-ref-update-processor-api:replicationService=[replication-service]",
+        "com.adobe.cq.cq-ref-update-processor-api:referenceProcessingService=[reference-processing-service,content-reader-service,dam-writer-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~cq-ref-update-processor-impl":    {
+      "user.mapping":[
+        "com.adobe.cq.cq-ref-update-processor-impl:replicationService=[replication-service]",
+        "com.adobe.cq.cq-ref-update-processor-impl:referenceProcessingService=[reference-processing-service,content-reader-service,dam-writer-service]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~cq-ref-update-processor":    {
+      "queue.priority":"MIN",
+      "queue.name":"Reference Update Processing Queue",
+      "queue.topics":[
+        "ref-updater/references",
+        "ref-updater/update",
+        "ref-updater/delete"
+      ],
+      "queue.type":"UNORDERED",
+      "queue.retries":"10",
+      "queue.keepJobs":"true",
+      "queue.maxparallel":"2"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~platform-reporting":    {
+      "user.mapping":[
+        "com.day.cq.cq-reporting=[snapshotservice,content-reader-service]"
+      ]
+    },
+    "org.apache.sling.jcr.base.internal.LoginAdminWhitelist.fragment~cq-assets":    {
+      "whitelist.bundles":[
+        "com.adobe.cq.dam.cq-scene7-imaging"
+      ],
+      "whitelist.name":"cq-assets"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~scene7imaging":    {
+      "user.mapping":[
+        "com.adobe.cq.dam.cq-scene7-imaging:dmreplicateonmodify=[dynamic-media-replication,scene7-config-service]",
+        "com.adobe.cq.dam.cq-scene7-imaging:dmcontentfilter=[dynamic-media-replication-filter]",
+        "com.adobe.cq.dam.cq-scene7-imaging:scene7configservice=[scene7-config-service]",
+        "com.adobe.cq.dam.cq-scene7-imaging:scene7syncservice=[dynamic-media-s7sync,scene7-config-service]"
+      ]
+    },
+    "org.apache.sling.resourcemerger.picker.overriding":    {
+      "configured":""
+    },
+    "com.day.cq.wcm.core.impl.AuthoringUIModeServiceImpl":    {
+      "authoringUIModeService.editorUrl.touch":"/editor.html",
+      "authoringUIModeService.editorUrl.classic":"/cf#",
+      "authoringUIModeService.default":"TOUCH"
+    },
+    "com.adobe.granite.resourcestatus.impl.CompositeStatusType~editor.config":    {
+      "name":"editor",
+      "types":[
+        "workflow",
+        "launches"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~com.adobe.ups-imsconfig":    {
+      "user.mapping":[
+        "com.adobe.cq.adobeims.core:Adobe Experience Platform=[ups-imsconfig-service]",
+        "com.adobe.cq.ups-integration:Adobe Experience Platform=[ups-imsconfig-service, user-reader-service]",
+        "com.adobe.cq.ups-user-utils:Adobe Experience Platform=[ups-imsconfig-service, user-reader-service]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~asyncpagemoverollout":    {
+      "queue.priority":"NORM",
+      "queue.name":"Async Page Move and Rollout Queue Config",
+      "queue.topics":[
+        "com/adobe/cq/wcm/jobs/async/rollout",
+        "com/adobe/cq/wcm/jobs/async/pagemove"
+      ],
+      "queue.type":"ORDERED",
+      "queue.retries":"0",
+      "queue.retrydelay":"60000",
+      "queue.keepJobs":"true"
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~asyncwcmtranslation":    {
+      "queue.priority":"NORM",
+      "queue.name":"Translation Async Queue Config",
+      "queue.topics":[
+        "com/adobe/cq/wcm/translation/impl/async/deleteLC"
+      ],
+      "queue.type":"TOPIC_ROUND_ROBIN",
+      "queue.retries":"1",
+      "queue.retrydelay":"60000",
+      "queue.keepJobs":"true",
+      "queue.maxparallel":"0.5"
+    },
+    "org.apache.sling.jcr.base.internal.LoginAdminWhitelist.fragment~cq-wcm":    {
+      "whitelist.bundles":[
+        "com.day.cq.wcm.cq-msm-core"
+      ],
+      "whitelist.name":"cq-wcm"
+    },
+    "com.day.cq.wcm.core.impl.PageManagerFactoryImpl":    {
+      "illegalCharMapping":"",
+      "pageSubTreeActivationCheck":false
+    },
+    "com.adobe.cq.wcm.jobs.async.impl.AsyncRolloutConfigProviderService":    {
+      "jobTopicName":"com/adobe/cq/wcm/jobs/async/rollout",
+      "emailEnabled":true
+    },
+    "com.adobe.cq.wcm.jobs.async.impl.AsyncPageMoveConfigProviderService":    {
+      "jobTopicName":"com/adobe/cq/wcm/jobs/async/pagemove",
+      "emailEnabled":true,
+      "referenceAdjustBatchSize":"100",
+      "adjustReferenceRetryCount":"3",
+      "failJobOnRefAdjustFailure":false
+    },
+    "com.day.cq.wcm.notification.impl.NotificationManagerImpl":    {
+      "event.topics":[
+        "com/day/cq/wcm/core/page",
+        "com/day/cq/replication",
+        "com/adobe/cq/social/forum",
+        "com/day/cq/collab/forum",
+        "com/adobe/cq/social/forum/digest",
+        "com/adobe/cq/social/forumlevel/digest"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~wurfl-service":    {
+      "user.mapping":[
+        "com.day.cq.wcm.cq-wcm-mobile-core:wurfl-loader-service=[wurfl-loader-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~contentsync":    {
+      "user.mapping":[
+        "com.day.cq.wcm.cq-wcm-content-sync=[pageexporterservice]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~webservice-support":    {
+      "user.mapping":[
+        "com.day.cq.wcm.cq-wcm-webservice-support:replication=[webservice-support-replication]",
+        "com.day.cq.wcm.cq-wcm-webservice-support:servicelibfinder=[webservice-support-servicelibfinder,sling-scripting]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~msm":    {
+      "user.mapping":[
+        "com.day.cq.wcm.cq-msm-core=[msm-service,workflow-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~wcm-launches-core":    {
+      "user.mapping":[
+        "com.adobe.cq.wcm.cq-wcm-launches-core:launch-event-service=[launch-event-service,content-reader-service]",
+        "com.adobe.cq.wcm.cq-wcm-launches-core:launch-promote-service=[launch-promote-service,replication-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~statistics-service":    {
+      "user.mapping":[
+        "com.day.cq.wcm.cq-wcm-mobile-core:statistics-service=[statistics-service,content-reader-service]",
+        "com.day.cq.wcm.cq-wcm-mobile-core=[wurfl-loader-service]"
+      ]
+    },
+    "com.day.cq.wcm.mobile.core.impl.MobileEmulatorProvider~page-config":    {
+      "mobile.resourceTypes":[
+        "wcm/foundation/components/page"
+      ],
+      "README":"Activates the layouting functionality for the page type"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~wcm-designimporter":    {
+      "user.mapping":[
+        "com.day.cq.wcm.cq-wcm-designimporter:canvaspage-activate-service=[canvaspage-activate-service,campaign-reader]",
+        "com.day.cq.wcm.cq-wcm-designimporter:canvaspage-delete-service=[canvaspage-delete-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~wcm-style":    {
+      "user.mapping":[
+        "com.adobe.cq.com.adobe.cq.wcm.style:component-style-info-cache-service=[configuration-reader-service,sling-scripting]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~wcm-notification":    {
+      "user.mapping":[
+        "com.day.cq.wcm.cq-wcm-notification:notification-service=[notification-service,user-reader-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~wcm-core":    {
+      "user.mapping":[
+        "com.adobe.cq.wcm.com.adobe.cq.wcm.jobs.async:reference-adjustment-service=[reference-adjustment-service,content-reader-service]",
+        "com.day.cq.wcm.cq-wcm-core:dim-service=[content-reader-service]",
+        "com.day.cq.wcm.cq-wcm-core:version-purge=[version-purge-service]",
+        "com.day.cq.wcm.cq-wcm-core:reference-adjustment-service=[reference-adjustment-service,content-reader-service]",
+        "com.day.cq.wcm.cq-command:reference-search-service=[content-reader-service]",
+        "com.day.cq.wcm.cq-wcm-core:language-manager-service=[language-manager-service]",
+        "com.day.cq.wcm.cq-wcm-core:primary-resource-search=[primary-resource-search-service]",
+        "com.day.cq.wcm.cq-wcm-core:components-search=[sling-scripting]",
+        "com.day.cq.wcm.cq-wcm-core:version-manager=[version-manager-service,content-writer-service]",
+        "com.adobe.cq.wcm.com.adobe.aem.wcm.pwa:sites-pwa-service=[sites-pwa-service]",
+        "com.day.cq.wcm.cq-wcm-undo:undo-service=[undo-service]",
+        "com.day.cq.wcm.cq-wcm-core:design-cache-service=[design-cache-service]",
+        "com.day.cq.wcm.cq-wcm-core:repository-change-listener-service=[repository-change-listener-service,content-reader-service,configuration-reader-service]",
+        "com.day.cq.wcm.cq-wcm-core:on-off-time-service=[on-off-time-service,content-reader-service]",
+        "com.day.cq.wcm.cq-wcm-workflow:device-identification-service=[content-reader-service]",
+        "com.day.cq.wcm.cq-wcm-core:replication-service=[replication-service]",
+        "com.day.cq.wcm.cq-wcm-workflow:wcm-workflow-service=[workflow-service]",
+        "com.day.cq.wcm.cq-wcm-workflow:wcm-page-service=[content-reader-service,configuration-reader-service,sling-scripting]",
+        "com.day.cq.wcm.cq-wcm-core:omnisearch-service=[omnisearch-service]",
+        "com.adobe.cq.wcm.cq-wcm-launches-core:omnisearch-service=[omnisearch-service]",
+        "com.day.cq.wcm.cq-wcm-core:page-name-validator-service=[page-name-validator-service]",
+        "com.day.cq.wcm.cq-wcm-core:asyncjobshelper=[async-jobs-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~wcm-async":    {
+      "user.mapping":[
+        "com.adobe.cq.wcm.com.adobe.cq.wcm.jobs.async:asyncjobshelper=[async-jobs-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~translation-job":    {
+      "user.mapping":[
+        "com.day.cq.wcm.cq-wcm-translation:translation-job=[translation-job-service]",
+        "com.day.cq.wcm.cq-wcm-translation:translation-preview=[translation-preview-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~sling-scripting-wcm":    {
+      "user.mapping":[
+        "com.adobe.cq.sightly.cq-wcm-sightly-extension=[sling-scripting]",
+        "com.day.cq.wcm.cq-wcm-foundation=[sling-scripting]"
+      ]
+    },
+    "com.day.cq.wcm.mobile.core.impl.redirect.RedirectFilter":    {
+      "redirect.stats.enabled":false,
+      "redirect.enabled":false
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~cq-versionhistory":    {
+      "user.mapping":[
+        "com.day.cq.wcm.cq-wcm-core:versions-preview-service-user=[versions-preview-service-user]"
+      ]
+    },
+    "com.day.cq.wcm.core.impl.WCMDebugFilter":    {
+      "wcmdbgfilter.enabled":false,
+      "wcmdbgfilter.jspDebug":false
+    },
+    "com.adobe.cq.dam.cfm.impl.component.ComponentConfigImpl~core-comp-v1":    {
+      "dam.cfm.component.elementsProp":"elementName",
+      "dam.cfm.component.variationProp":"variationName",
+      "dam.cfm.component.fileReferenceProp":"fragmentPath",
+      "dam.cfm.component.resourceType":"core/wcm/components/contentfragment/v1/contentfragment"
+    },
+    "com.adobe.cq.wcm.core.components.internal.services.embed.OEmbedClientImplConfigurationFactory~youtube":    {
+      "unsafeContext":"true",
+      "scheme":[
+        "https://.*.youtube.com/watch.*",
+        "https://.*.youtube.com/v/.*",
+        "https://youtu.be/.*"
+      ],
+      "format":"json",
+      "endpoint":"https://www.youtube.com/oembed",
+      "provider":"YouTube"
+    },
+    "com.adobe.cq.wcm.core.components.internal.servlets.AdaptiveImageServletMappingConfigurationFactory~coreimg":    {
+      "selectors":[
+        "coreimg"
+      ],
+      "extensions":[
+        "jpg",
+        "jpeg",
+        "png",
+        "gif",
+        "svg"
+      ],
+      "resource.types":[
+        "core/wcm/components/image",
+        "cq/Page"
+      ],
+      "maxSize":10000
+    },
+    "com.adobe.cq.wcm.core.components.internal.services.embed.OEmbedClientImplConfigurationFactory~facebookPost":    {
+      "unsafeContext":"true",
+      "scheme":[
+        "https?://www\\.facebook\\.com/.*/posts/.*",
+        "https?://www\\.facebook\\.com/photos/.*",
+        "https?://www\\.facebook\\.com/.*/photos/.*",
+        "https?://www\\.facebook\\.com/photo\\.php.*",
+        "https?://www\\.facebook\\.com/photo\\.php"
+      ],
+      "format":"json",
+      "endpoint":"https://www.facebook.com/plugins/post/oembed.json",
+      "provider":"Facebook Post"
+    },
+    "com.adobe.cq.wcm.core.components.internal.services.embed.OEmbedClientImplConfigurationFactory~instagram":    {
+      "unsafeContext":"true",
+      "scheme":[
+        "https?://(www\\.)?instagram\\.com/p/.*",
+        "https?://(www\\.)?instagr\\.am/p/.*"
+      ],
+      "format":"json",
+      "endpoint":"https://api.instagram.com/oembed",
+      "provider":"Instagram"
+    },
+    "com.adobe.cq.wcm.core.components.internal.services.embed.OEmbedClientImplConfigurationFactory~flickr":    {
+      "unsafeContext":"true",
+      "scheme":[
+        "https?://.*.flickr\\.com/photos/.*",
+        "https?://flic\\.kr/p/.*"
+      ],
+      "format":"xml",
+      "endpoint":"https://www.flickr.com/services/oembed/",
+      "provider":"Flickr"
+    },
+    "com.adobe.cq.wcm.core.components.internal.services.embed.OEmbedClientImplConfigurationFactory~twitter":    {
+      "unsafeContext":"true",
+      "scheme":[
+        "https?://(.*.)?twitter.com/.*"
+      ],
+      "format":"json",
+      "endpoint":"https://publish.twitter.com/oembed",
+      "provider":"Twitter"
+    },
+    "com.adobe.cq.wcm.core.components.internal.services.embed.OEmbedClientImplConfigurationFactory~soundcloud":    {
+      "unsafeContext":"true",
+      "scheme":[
+        "https?://soundcloud\\.com/.*"
+      ],
+      "format":"json",
+      "endpoint":"https://soundcloud.com/oembed",
+      "provider":"SoundCloud"
+    },
+    "com.day.cq.wcm.foundation.forms.impl.MailServlet~core-components":    {
+      "service.description":"Core Form Mail Servlet",
+      "sling.servlet.resourceTypes":[
+        "core/wcm/components/form/container/v1/container",
+        "core/wcm/components/form/container/v2/container"
+      ],
+      "resource.blacklist":[
+        "/content/usergenerated"
+      ],
+      "resource.whitelist":[
+        "/content",
+        "/home"
+      ],
+      "sling.servlet.selectors":"mail"
+    },
+    "com.adobe.cq.wcm.core.components.internal.servlets.AdaptiveImageServletMappingConfigurationFactory~img":    {
+      "selectors":[
+        "img"
+      ],
+      "extensions":[
+        "jpg",
+        "jpeg",
+        "png",
+        "gif",
+        "svg"
+      ],
+      "resource.types":[
+        "core/wcm/components/image"
+      ],
+      "maxSize":10000
+    },
+    "com.adobe.cq.wcm.core.components.internal.services.embed.OEmbedClientImplConfigurationFactory~facebookVideo":    {
+      "unsafeContext":"true",
+      "scheme":[
+        "https?://www\\.facebook\\.com/.*/videos/.*",
+        "https?://www\\.facebook\\.com/video\\.php.*"
+      ],
+      "format":"json",
+      "endpoint":"https://www.facebook.com/plugins/video/oembed.json",
+      "provider":"Facebook Video"
+    },
+    "com.adobe.cq.ui.wcm.commons.internal.servlets.rte.RTEFilterServletFactory.amended~core-components":    {
+      "resource.types":[
+        "core/wcm/components/text/v1/text",
+        "core/wcm/components/text/v2/text"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~componentsservice":    {
+      "user.mapping":[
+        "com.adobe.cq.core.wcm.components.core:components-service=[clientlibs-service,sling-scripting]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~seo":    {
+      "user.mapping":[
+        "com.adobe.cq.wcm.com.adobe.aem.wcm.seo.impl:replication-service=[replication-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~wcm-site-manager":    {
+      "user.mapping":[
+        "com.adobe.cq.com.adobe.aem.wcm.site.manager:theme-update-service=[theme-update-service]"
+      ]
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~wcm-frontend-manager":    {
+      "user.mapping":[
+        "com.adobe.cq.com.adobe.aem.wcm.frontend.manager:theme-update-service=[theme-update-service]"
+      ]
+    },
+    "org.apache.sling.event.jobs.QueueConfiguration~createsitefromsitetemplate":    {
+      "queue.priority":"NORM",
+      "queue.name":"Create Site from Template",
+      "queue.topics":[
+        "aem/wcm/site/manager/jobs/createsitefromsitetemplate"
+      ],
+      "queue.type":"ORDERED",
+      "queue.retries":"0",
+      "queue.retrydelay":"60000",
+      "queue.keepJobs":"true"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~clientlibs":    {
+      "user.mapping":[
+        "com.adobe.granite.ui.clientlibs:clientlibs-service=[clientlibs-service,sling-scripting]"
+      ]
+    },
+    "com.adobe.granite.ui.clientlibs.impl.HtmlLibraryManagerImpl":    {
+      "htmllibmanager.excluded.path.list":[
+        "/etc/commerce/classifications",
+        "/etc/commerce/collections",
+        "/etc/commerce/payment-methods",
+        "/etc/commerce/products",
+        "/etc/commerce/shipping-methods",
+        "/etc/reports/auditreport",
+        "/etc/reports/compreport",
+        "/etc/segmentation",
+        "/etc/taskmanagement",
+        "/etc/workflow/instances"
+      ],
+      "htmllibmanager.debug":false,
+      "htmllibmanager.timing":false,
+      "htmllibmanager.minify":true,
+      "htmllibmanager.gzip":true,
+      "htmllibmanager.processor.js":"min:gcc",
+      "htmllibmanager.strict.versioning":true,
+      "htmllibmanager.longcache.patterns":[
+        "/.*;hash"
+      ]
+    },
+    "com.adobe.granite.workflow.console.generate.WorkflowModelGeneratorImpl":    {
+      "enabled":true
+    },
+    "com.adobe.granite.security.user.UserPropertiesService":    {
+      "granite.userproperties.resourcetypes":[
+        "preferences=cq:Preferences",
+        "profiles/.*=cq/security/components/profile",
+        "profile=cq/security/components/profile"
+      ]
+    },
+    "org.apache.sling.commons.log.LogManager.factory.config~asyncjssightly":    {
+      "org.apache.sling.commons.log.pattern":"{0,date,dd.MM.yyyy HH:mm:ss.SSS} *{4}* [{2}] {3} {5}",
+      "org.apache.sling.commons.log.names":[
+        "org.apache.sling.scripting.sightly.js.impl.jsapi.ProxyAsyncScriptableFactory"
+      ],
+      "org.apache.sling.commons.log.file":"${logging.error.file}",
+      "org.apache.sling.commons.log.level":"error"
+    },
+    "org.apache.sling.commons.threads.impl.DefaultThreadPool.factory~cq-polling-importer":    {
+      "name":"cq-polling-importer",
+      "maxPoolSize:Integer":10,
+      "minPoolSize:Integer":0
+    },
+    "org.apache.sling.commons.threads.impl.DefaultThreadPool.factory~cq-asset-processing":    {
+      "name":"cq-asset-processing",
+      "maxPoolSize:Integer":10,
+      "minPoolSize:Integer":1
+    },
+    "org.apache.sling.commons.threads.impl.DefaultThreadPool.factory~discovery":    {
+      "name":"discovery",
+      "maxPoolSize:Integer":3,
+      "minPoolSize:Integer":0
+    },
+    "org.apache.sling.commons.threads.impl.DefaultThreadPool.factory~pool-for-scheduled-jobs-of-org-apache-sling-event":    {
+      "name":"org-apache-sling-event",
+      "maxPoolSize:Integer":4,
+      "minPoolSize:Integer":0
+    },
+    "org.apache.sling.commons.log.LogManager.factory.config~request.log":    {
+      "org.apache.sling.commons.log.pattern":"{5}",
+      "org.apache.sling.commons.log.names":[
+        "log.request"
+      ],
+      "org.apache.sling.commons.log.level":"info",
+      "org.apache.sling.commons.log.file":"${logging.request.file}"
+    },
+    "com.day.cq.wcm.foundation.forms.impl.MailServlet~foundation":    {
+      "service.description":"Foundation Form Mail Servlet",
+      "sling.servlet.resourceTypes":[
+        "foundation/components/form/start"
+      ],
+      "resource.whitelist":[
+        "/content",
+        "/home"
+      ],
+      "resource.blacklist":[
+        "/content/usergenerated"
+      ],
+      "sling.servlet.selectors":"mail"
+    },
+    "org.apache.sling.commons.log.LogManager.factory.writer~request.log":    {
+      "org.apache.sling.commons.log.file":"logs/request.log",
+      "org.apache.sling.commons.log.file.number:Integer":5,
+      "org.apache.sling.commons.log.file.size":"'.'yyyy-MM-dd"
+    },
+    "org.apache.sling.commons.log.LogManager.factory.writer~upgrade.config":    {
+      "org.apache.sling.commons.log.file":"logs/upgrade.log",
+      "org.apache.sling.commons.log.file.number":"5",
+      "org.apache.sling.commons.log.file.size":"'.'yyyy-MM-dd"
+    },
+    "org.apache.sling.commons.log.LogManager.factory.config~queryrecorder.log":    {
+      "org.apache.sling.commons.log.pattern":"{0,date,dd.MM.yyyy HH:mm:ss.SSS} *{4}* [{2}] {3} {5}",
+      "org.apache.sling.commons.log.names":[
+        "org.apache.jackrabbit.oak.query.stats.QueryRecorder"
+      ],
+      "org.apache.sling.commons.log.level":"debug",
+      "org.apache.sling.commons.log.file":"${logging.queryrecorder.file}"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~foundation":    {
+      "user.mapping":[
+        "com.day.cq.wcm.cq-wcm-foundation:hierarchymodification-listener-service=[content-reader-service]",
+        "com.day.cq.wcm.cq-wcm-foundation:start-workflow-service=[foundation-forms-service,workflow-service]",
+        "com.day.cq.wcm.cq-wcm-foundation:colctl-postprocessor-service=[content-reader-service]",
+        "com.day.cq.wcm.cq-wcm-foundation:form-store-service=[foundation-forms-store-service]"
+      ]
+    },
+    "com.adobe.cq.upgrades.cleanup.impl.UpgradeInstallFolderCleanup~installfolders":    {
+      "delete.name.regexps":[
+        "install(\\.crx3|\\.author|\\.publish)?"
+      ]
+    },
+    "com.adobe.cq.upgrades.cleanup.impl.UpgradeContentCleanup~publications":    {
+      "delete.path.regexps":[
+        "/libs/media"
+      ],
+      "delete.sql2.query":"SELECT * from [nt:folder] WHERE ischildnode('/libs')"
+    },
+    "org.apache.sling.commons.scheduler.impl.QuartzScheduler":    {
+      "allowedPoolNames":[
+        "oak",
+        "discovery",
+        "cq-polling-importer",
+        "cq-asset-processing",
+        "org-apache-sling-sitemap",
+        "org-apache-sling-event"
+      ]
+    },
+    "com.adobe.cq.ui.wcm.commons.internal.servlets.rte.RTEFilterServletFactory.amended~foundation":    {
+      "resource.types":[
+        "wcm/foundation/components/text",
+        "wcm/foundation/components/textimage"
+      ]
+    },
+    "org.apache.sling.commons.log.LogManager.factory.config~audit.log":    {
+      "org.apache.sling.commons.log.pattern":"{0,date,dd.MM.yyyy HH:mm:ss.SSS} {5}",
+      "org.apache.sling.commons.log.names":[
+        "org.apache.jackrabbit.core.audit",
+        "org.apache.jackrabbit.oak.audit"
+      ],
+      "org.apache.sling.commons.log.level":"info",
+      "org.apache.sling.commons.log.file":"${logging.audit.file}"
+    },
+    "org.apache.sling.commons.log.LogManager.factory.writer~access.log":    {
+      "org.apache.sling.commons.log.file":"logs/access.log",
+      "org.apache.sling.commons.log.file.number:Integer":5,
+      "org.apache.sling.commons.log.file.size":"'.'yyyy-MM-dd"
+    },
+    "com.adobe.cq.upgrades.cleanup.impl.UpgradeContentCleanup~contentpackages":    {
+      "delete.path.regexps":[
+        "/etc/packages/[dD]ay/.*",
+        "/etc/packages/[aA]dobe/.*",
+        "/etc/packages/com/[dD]ay/.*",
+        "/etc/packages/com/[aA]dobe/.*",
+        "/etc/packages/com.([dD]ay|[aA]dobe).cq/.*",
+        "/etc/packages/aemfd/.*"
+      ],
+      "delete.sql2.query":"SELECT child.* from [nt:file] AS child INNER JOIN [nt:folder] AS parent ON ISCHILDNODE(child,parent) WHERE ISDESCENDANTNODE(parent,'/etc/packages') AND name(parent)='.snapshot' AND ISDESCENDANTNODE(child,'/etc/packages') AND NAME(child) NOT LIKE '%geometrixx%'"
+    },
+    "org.apache.sling.commons.log.LogManager.factory.config~access.log":    {
+      "org.apache.sling.commons.log.pattern":"{5}",
+      "org.apache.sling.commons.log.names":[
+        "log.access"
+      ],
+      "org.apache.sling.commons.log.level":"info",
+      "org.apache.sling.commons.log.file":"${logging.access.file}"
+    },
+    "org.apache.sling.commons.log.LogManager.factory.writer~audit.log":    {
+      "org.apache.sling.commons.log.file":"logs/audit.log",
+      "org.apache.sling.commons.log.file.number:Integer":5,
+      "org.apache.sling.commons.log.file.size":"'.'yyyy-MM-dd"
+    },
+    "org.apache.sling.commons.log.LogManager.factory.config~auditlog.log":    {
+      "org.apache.sling.commons.log.pattern":"{0,date,dd.MM.yyyy HH:mm:ss.SSS} {5}",
+      "org.apache.sling.commons.log.names":[
+        "com.adobe.granite.audit"
+      ],
+      "org.apache.sling.commons.log.level":"info",
+      "org.apache.sling.commons.log.file":"${logging.auditlog.file}"
+    },
+    "com.day.cq.wcm.foundation.security.impl.SaferSlingPostValidatorImpl":    {
+      "parameter.whitelist.prefixes":[
+        "dc:",
+        "xmpRights:"
+      ],
+      "parameter.whitelist":[
+        "rep:userId",
+        "rep:password",
+        "rep:password_confirm",
+        "../cq:authorizableCategory"
+      ],
+      "operation.whitelist.prefixes":[
+        "social:"
+      ]
+    },
+    "org.apache.sling.commons.log.LogManager.factory.config~history.config":    {
+      "org.apache.sling.commons.log.pattern":"{0,date,dd.MM.yyyy HH:mm:ss} {1} {5}",
+      "org.apache.sling.commons.log.names":[
+        "log.history"
+      ],
+      "org.apache.sling.commons.log.level":"info",
+      "org.apache.sling.commons.log.file":"${logging.history.file}"
+    },
+    "com.adobe.cq.upgrades.cleanup.impl.UpgradeContentCleanup~creativecloud":    {
+      "delete.path.regexps":[
+        "/libs/cc"
+      ],
+      "delete.sql2.query":"SELECT * from [nt:folder] WHERE ischildnode('/libs')"
+    },
+    "org.apache.sling.extensions.webconsolesecurityprovider.internal.SlingWebConsoleSecurityProvider":    {
+      "groups":[
+        "administrators",
+        "$[env:aemCloudAdministrators;default=administrators]",
+        "CM_DEVELOPER_ROLE_PROFILE",
+        "Cloud Manager - Developer Role",
+        "CM_CS_DEVELOPER_ROLE_PROFILE",
+        "Developer - Cloud Service"
+      ]
+    },
+    "com.adobe.granite.workflow.core.WorkflowSessionFactory":    {
+      "cq.workflow.superuser":[
+        "admin",
+        "administrators",
+        "workflow-process-service",
+        "workflow-service",
+        "workflow-administrators",
+        "wcm-workflow-service",
+        "$[env:aemCloudAdministrators;default=administrators]",
+        "$[env:internalServicesTechnicalAccountEmail]"
+      ]
+    },
+    "com.adobe.cq.deserfw.impl.DeserializationFirewallImpl":    {
+      "name":"Deserialization Firewall Configuration",
+      "description":"Description for com.adobe.cq.deserfw.impl.DeserializationFirewallImpl",
+      "attributes":"{\"firewall.deserialization.whitelist\":{\"name\":\"Whitelisted classes or package prefixes\",\"description\":\"List of whitelisted classes/package prefixes, or a single empty entry for blacklist only checking\",\"type\":\"String\",\"cardinality\":\"unlimited\",\"default\":[\"[\",\"com.adobe.\",\"com.day.\",\"com.google.api.client.auth.oauth2.\",\"com.scene7.\",\"java.\",\"javax.\",\"oracle.sql.\",\"org.apache.http.auth\",\"org.apache.http.impl.auth\",\"org.apache.jackrabbit.\",\"org.apache.sling.\",\"scala.None\",\"scala.Option\",\"sun.util.calendar.ZoneInfo\"]},\"firewall.deserialization.blacklist\":{\"name\":\"Blacklisted classes or package prefixes\",\"description\":\"List of blacklisted classes/prefixes\",\"type\":\"String\",\"cardinality\":\"unlimited\",\"default\":[\"org.apache.commons.collections.functors.InvokerTransformer\",\"org.apache.commons.collections4.functors.InvokerTransformer\",\"org.apache.commons.collections.functors.InstantiateTransformer\",\"org.apache.commons.collections4.functors.InstantiateTransformer\",\"org.apache.xalan.internal.xsltc.trax.TemplatesImpl\",\"org.codehaus.groovy.runtime.ConvertedClosure\",\"org.codehaus.groovy.runtime.MethodClosure\",\"org.springframework.beans.factory.ObjectFactory\",\"org.springframework.core.SerializableTypeWrapper$MethodInvokeTypeProvider\",\"com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl\"]},\"firewall.deserialization.diagnostics\":{\"name\":\"Diagnostic logging\",\"description\":\"Level of diagnostic information to be added to logging. Options are none, class-name-only, or full-stack\",\"type\":\"String\",\"cardinality\":\"required\",\"default\":\"class-name-only\"}}"
+    },
+    "com.adobe.cq.unifiedshell.impl.discovery.DiscoveryServlet":    {
+      "imsOrg":"$[env:imsOrganization]"
+    },
+    "com.adobe.granite.threaddump.ThreadDumpCollector":    {
+      "granite.threaddump.enabled":false
+    },
+    "org.apache.jackrabbit.oak.spi.security.authorization.cug.impl.CugConfiguration":    {
+      "cugSupportedPaths":[
+        "/content"
+      ],
+      "cugEnabled":false
+    },
+    "org.apache.sling.jcr.webdav.impl.servlets.SimpleWebDavServlet":    {
+      "dav.root":"/crx/repository",
+      "type.content":"nt:resource",
+      "collection.types":[
+        "nt:file",
+        "nt:resource",
+        "dam:Asset"
+      ],
+      "filter.prefixes":[
+        "rep",
+        "jcr"
+      ],
+      "dav.realm":"Adobe CRX WebDAV",
+      "type.collections":"sling:Folder",
+      "type.noncollections":"nt:file"
+    },
+    "org.apache.sling.servlets.get.DefaultGetServlet":    {
+      "aliases":"xml:pdf",
+      "index":false,
+      "enable.txt":false,
+      "enable.html":false,
+      "enable.json":true,
+      "index.files":[
+      ],
+      "enable.xml":false,
+      "json.maximumresults:Integer":1000
+    },
+    "com.adobe.granite.distribution.core.impl.CryptoDistributionTransportSecretProvider~default.json":    {
+      "name":"default",
+      "encryptedPassword":"",
+      "username":""
+    },
+    "com.adobe.granite.cors.impl.CORSPolicyImpl~adobe":    {
+      "alloworiginregexp":[
+        "https://.*\\.adobe\\.com",
+        "https://.*\\.adobe\\.net"
+      ],
+      "allowedpaths":[
+        ".*"
+      ],
+      "supportscredentials":true,
+      "supportedmethods":[
+        "GET",
+        "HEAD",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH"
+      ],
+      "supportedheaders":[
+        "*"
+      ],
+      "exposedheaders":[
+        "Link",
+        "Etag",
+        "Version",
+        "Revision",
+        "Content-MD5",
+        "Location",
+        "Content-Location",
+        "asset-id",
+        "x-resource-id",
+        "x-medialibrary-version"
+      ],
+      "maxage:Integer":86400
+    },
+    "com.adobe.granite.cors.impl.CORSPolicyImpl~workfront":    {
+      "alloworiginregexp":[
+        "https://.*\\.workfront\\.com",
+        "https://.*\\.workfront-dev\\.com",
+        "https://.*\\.dev\\.workfront\\.tech"
+      ],
+      "allowedpaths":[
+        ".*"
+      ],
+      "supportscredentials":true,
+      "supportedmethods":[
+        "GET",
+        "HEAD",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH"
+      ],
+      "supportedheaders":[
+        "*"
+      ],
+      "exposedheaders":[
+        "Link",
+        "Etag",
+        "Version",
+        "Revision",
+        "Content-MD5",
+        "Location",
+        "Content-Location",
+        "asset-id",
+        "x-resource-id",
+        "x-medialibrary-version"
+      ],
+      "maxage:Integer":86400
+    },
+    "org.apache.sling.security.impl.ReferrerFilter":    {
+      "allow.hosts.regexp":[
+        "https://.*\\.adobe\\.com:443",
+        "https://.*\\.adobe\\.net:443",
+        "https://.*\\.workfront\\.com:443",
+        "https://.*\\.workfront-dev\\.com:443",
+        "https://.*\\.dev\\.workfront\\.tech:443"
+      ]
+    },
+    "com.day.cq.replication.impl.audit.ReplicationAuditLogger":    {
+      "enable":"true"
+    },
+    "com.day.cq.replication.impl.ReplicatorImpl":    {
+      "replicationStatusPerAgent":true
+    },
+    "com.adobe.granite.ui.preview.impl.PreviewEnabledConfigServiceImpl":    {
+      "previewEnabled":"$[env:AEM_PREVIEW_ENABLED;type=Boolean;default=false]"
+    },
+    "org.apache.felix.hc.generalchecks.HttpRequestsCheck~systemstartup":    {
+      "hc.name":"Health Check: Required paths check",
+      "hc.tags":[
+        "systemstartup"
+      ],
+      "requests":[
+        "-X HEAD -H \"X-AEM-LIVENESS-PROBE: Liveness-Probe\" /libs/granite/core/content/login.html => CODE = 200"
+      ],
+      "connectTimeoutInMs":"$[env:AEM_HTTP_REQUESTS_CHECK_TIMEOUT_MS;type=Integer;default=15000]",
+      "readTimeoutInMs":"$[env:AEM_HTTP_REQUESTS_CHECK_TIMEOUT_MS;type=Integer;default=15000]",
+      "statusForFailedContraint":"CRITICAL"
+    },
+    "com.day.cq.dam.core.impl.jmx.AssetMigrationMBeanImpl":    {
+      "jmx.objectname":"com.day.cq.dam:type=Associate Asset IDs"
+    },
+    "com.adobe.granite.resourcestatus.impl.CompositeStatusType~content-fragments.config":    {
+      "name":"content-fragments",
+      "types":[
+        "content-fragments-usages"
+      ]
+    },
+    "com.day.cq.dam.video.impl.servlet.VideoTestServlet":    {
+      "enabled":true
+    },
+    "com.day.cq.dam.core.impl.servlet.AssetDownloadServlet":    {
+      "enabled":true
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~cdn-integration":    {
+      "user.mapping":[
+        "com.adobe.cq.cdn.cdn-rewriter=[cdn-service,sling-scripting,content-reader-service]"
+      ]
+    },
+    "com.day.cq.searchpromote.impl.PublishSearchPromoteConfigHandler":    {
+      "cq.searchpromote.confighandler.enabled":false
+    },
+    "com.day.cq.searchpromote.impl.SearchPromoteServiceImpl":    {
+      "cq.searchpromote.configuration.environment":"stage"
+    },
+    "com.day.cq.polling.importer.impl.ManagedPollConfigImpl~209a0117-b1a5-4a9a-88be-da9dcdea35c1":    {
+      "reference":true,
+      "login":"",
+      "interval":31536000,
+      "enabled":true,
+      "source":"screport:default",
+      "target":"",
+      "id":"aem-analytics-integration-lastYear"
+    },
+    "com.day.cq.polling.importer.impl.ManagedPollConfigImpl~2c98542b-3679-44d4-a9c9-059d177f01aa":    {
+      "reference":true,
+      "login":"",
+      "interval":43200,
+      "enabled":true,
+      "source":"screport:default",
+      "target":"",
+      "id":"aem-analytics-integration-last90DaysPrev"
+    },
+    "com.day.cq.polling.importer.impl.ManagedPollConfigImpl~3a6aba56-5fbd-409a-8184-75dad2d9adbd":    {
+      "reference":true,
+      "login":"",
+      "interval":86400,
+      "enabled":true,
+      "source":"screport:default",
+      "target":"",
+      "id":"aem-analytics-integration-thisYear"
+    },
+    "com.day.cq.polling.importer.impl.ManagedPollConfigImpl~6d43d7a6-6fa2-4a26-a9bd-543b2beb6af5":    {
+      "reference":true,
+      "login":"",
+      "interval":43200,
+      "enabled":true,
+      "source":"screport:default",
+      "target":"",
+      "id":"aem-analytics-integration-last90Days"
+    },
+    "com.day.cq.polling.importer.impl.ManagedPollConfigImpl~81d36401-8b25-4002-acef-a372e87c697a":    {
+      "reference":true,
+      "login":"",
+      "interval":43200,
+      "enabled":true,
+      "source":"screport:default",
+      "target":"",
+      "id":"aem-analytics-integration-last30DaysPrev"
+    },
+    "com.day.cq.polling.importer.impl.ManagedPollConfigImpl~c60774aa-ab9e-4a0e-a130-8508bdd0cf36":    {
+      "reference":true,
+      "login":"",
+      "interval":43200,
+      "enabled":true,
+      "source":"screport:default",
+      "target":"",
+      "id":"aem-analytics-integration-last30Days"
+    },
+    "com.day.cq.analytics.sitecatalyst.impl.servlets.AnalyticsSegmentsServlet":    {
+      "evaluate":"true"
+    },
+    "com.adobe.cq.history.impl.HistoryRequestFilter":    {
+      "history.requestFilter.excludedSelectors":[
+        "thumb.48.48",
+        "thumb.319.319",
+        "image"
+      ],
+      "history.requestFilter.excludedExtensions":[
+        "json"
+      ]
+    },
+    "com.adobe.cq.history.impl.HistoryServiceImpl":    {
+      "history.service.logger":"log.history",
+      "history.service.pathFilter":[
+        "+/content/.*"
+      ],
+      "history.service.resourceTypes":[
+        "cq:Page",
+        "dam:Asset"
+      ]
+    },
+    "com.day.cq.commons.servlets.RootMappingServlet":    {
+      "rootmapping.target":"/aem/start.html"
+    },
+    "com.day.cq.replication.audit.ReplicationEventListener":    {
+      "service.ranking:Integer":0
+    },
+    "com.day.cq.replication.impl.ReverseReplicator":    {
+      "service.ranking:Integer":0
+    },
+    "org.apache.sling.engine.impl.auth.SlingAuthenticator":    {
+      "auth.annonymous":false,
+      "auth.sudo.cookie":"sling.sudo",
+      "auth.http.realm":"Sling (Development)",
+      "sling.auth.requirements":[
+        "+/",
+        "-/libs/granite/core/content/login",
+        "-/etc.clientlibs",
+        "-/etc/clientlibs/granite",
+        "-/libs/dam/remoteassets/content/loginerror",
+        "-/aem/update.theme"
+      ],
+      "sling.auth.anonymous.user":"",
+      "auth.uri.suffix":[
+        "/j_security_check"
+      ],
+      "auth.http":"preemptive",
+      "auth.sudo.parameter":"sudo"
+    },
+    "com.day.cq.wcm.core.impl.LinkCheckerConfigurationFactoryImpl~author":    {
+      "link.predated.prefix":"<img class=\"cq-LinkChecker cq-LinkChecker--prefix cq-LinkChecker--predated\" src=\"/libs/cq/linkchecker/resources/linkcheck_o.gif\" alt=\"predated link: %s\" title=\"predated link: %s\" border=\"0\">",
+      "link.invalid.remove":true,
+      "link.invalid.prefix":"<img class=\"cq-LinkChecker cq-LinkChecker--prefix cq-LinkChecker--invalid\" src=\"/libs/cq/linkchecker/resources/linkcheck_o.gif\" alt=\"invalid link: %s\" title=\"invalid link: %s\" border=\"0\">",
+      "link.expired.suffix":"<img class=\"cq-LinkChecker cq-LinkChecker--suffix cq-LinkChecker--expired\" src=\"/libs/cq/linkchecker/resources/linkcheck_c.gif\" border=\"0\">",
+      "link.predated.suffix":"<img class=\"cq-LinkChecker cq-LinkChecker--suffix cq-LinkChecker--predated\" src=\"/libs/cq/linkchecker/resources/linkcheck_c.gif\" border=\"0\">",
+      "link.invalid.suffix":"<img class=\"cq-LinkChecker cq-LinkChecker--suffix cq-LinkChecker--invalid\" src=\"/libs/cq/linkchecker/resources/linkcheck_c.gif\" border=\"0\">",
+      "link.wcmmodes":[
+        "EDIT",
+        "READ_ONLY",
+        "DESIGN"
+      ],
+      "link.expired.remove":false,
+      "link.predated.remove":false,
+      "link.expired.prefix":"<img class=\"cq-LinkChecker cq-LinkChecker--prefix cq-LinkChecker--expired\" src=\"/libs/cq/linkchecker/resources/linkcheck_o.gif\" alt=\"expired link: %s\" title=\"expired link: %s\" border=\"0\">"
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~history-listener":    {
+      "user.mapping":[
+        "com.adobe.cq.cq-history:history-listener=[content-reader-service]"
+      ]
+    },
+    "com.adobe.cq.experiencelog.impl.ExperienceLogConfigServlet":    {
+      "enabled":true
+    },
+    "com.day.cq.wcm.msm.impl.actions.ReferencesUpdateActionFactory":    {
+      "cq.wcm.msm.action.excludednodetypes":[
+        "cq:LiveSyncConfig",
+        "cq:BlueprintSyncConfig",
+        "cq:LiveSyncAction",
+        "cq:meta"
+      ],
+      "cq.wcm.msm.action.excludedparagraphitems":[
+        "cq:propertyInheritanceCancelled"
+      ],
+      "cq.wcm.msm.action.excludedprops":[
+        "jcr:.*",
+        "sling:.*",
+        "cq:.*"
+      ]
+    },
+    "com.day.cq.wcm.msm.impl.actions.ContentDeleteActionFactory":    {
+      "cq.wcm.msm.action.excludednodetypes":[
+        "cq:LiveSyncConfig",
+        "cq:BlueprintSyncConfig",
+        "cq:LiveSyncAction",
+        "cq:CatalogSyncConfig",
+        "cq:CatalogSyncAction",
+        "cq:meta"
+      ],
+      "cq.wcm.msm.action.excludedparagraphitems":[
+        "cq:propertyInheritanceCancelled"
+      ],
+      "cq.wcm.msm.action.excludedprops":[
+        "jcr:.*",
+        "sling:.*",
+        "cq:.*"
+      ]
+    },
+    "com.day.cq.wcm.msm.impl.RolloutManagerImpl":    {
+      "configured":""
+    },
+    "com.day.cq.wcm.core.impl.variants.PageVariantsProviderImpl":    {
+      "default.externalizer.domain":"author"
+    },
+    "com.day.cq.wcm.core.impl.warp.TimeWarpFilter":    {
+      "filter.order":"2000",
+      "filter.scope":"request"
+    },
+    "com.day.cq.wcm.msm.impl.actions.OrderChildrenActionFactory":    {
+      "cq.wcm.msm.action.excludednodetypes":[
+        "cq:LiveSyncConfig",
+        "cq:BlueprintSyncConfig",
+        "cq:LiveSyncAction",
+        "cq:meta"
+      ],
+      "cq.wcm.msm.action.excludedparagraphitems":[
+        "cq:propertyInheritanceCancelled"
+      ],
+      "cq.wcm.msm.action.excludedprops":[
+        "jcr:.*",
+        "sling:.*",
+        "cq:.*"
+      ]
+    },
+    "com.day.cq.wcm.core.impl.WCMDeveloperModeFilter":    {
+      "configured":""
+    },
+    "com.day.cq.wcm.core.impl.event.PageEventAuditListener":    {
+      "configured":""
+    },
+    "com.day.cq.wcm.msm.impl.actions.ContentCopyActionFactory":    {
+      "cq.wcm.msm.action.excludednodetypes":[
+        "cq:LiveSyncConfig",
+        "cq:BlueprintSyncConfig",
+        "cq:CatalogSyncConfig",
+        "cq:meta"
+      ],
+      "cq.wcm.msm.action.excludedparagraphitems":[
+        "cq:annotations",
+        "cq:targetMetadata",
+        "cq:targetMetadataJson"
+      ],
+      "cq.wcm.msm.action.excludedprops":[
+        "[^.]",
+        "cq:authorExternalId",
+        "publishCampaignId",
+        "cq:publishExternalId",
+        "cq:xfMasterVariation",
+        "postId",
+        "cq:xfSocialActionDate",
+        "cq:xfSocialActionStatus",
+        "cq:targetOfferId"
+      ]
+    },
+    "com.day.cq.wcm.core.stats.PageViewStatisticsImpl":    {
+      "pageviewstatistics.trackingurl":"http://localhost:4502/libs/wcm/stats/tracker",
+      "pageviewstatistics.trackingscript.enabled":"false"
+    },
+    "com.day.cq.wcm.msm.impl.actions.ContentUpdateActionFactory":    {
+      "cq.wcm.msm.action.excludednodetypes":[
+        "cq:LiveSyncConfig",
+        "cq:BlueprintSyncConfig",
+        "cq:LiveSyncAction",
+        "cq:CatalogSyncConfig",
+        "cq:CatalogSyncAction",
+        "cq:meta"
+      ],
+      "cq.wcm.msm.action.excludedparagraphitems":[
+        "cq:propertyInheritanceCancelled",
+        "dc:title",
+        "cq:targetMetadata",
+        "cq:targetMetadataJson"
+      ],
+      "cq.wcm.msm.action.excludedprops":[
+        "jcr:.*",
+        "sling:(?!(resourceType|resourceSuperType)$).*",
+        "cq:(?!(designPath|template|lastTranslationUpdate|targetEngine|robotsTags)$).*",
+        "publishCampaignId"
+      ]
+    },
+    "com.day.cq.wcm.msm.impl.actions.VersionCopyActionFactory":    {
+      "cq.wcm.msm.action.excludednodetypes":[
+        "cq:LiveSyncConfig",
+        "cq:BlueprintSyncConfig",
+        "cq:LiveSyncAction",
+        "cq:meta"
+      ],
+      "cq.wcm.msm.action.excludedparagraphitems":[
+        "cq:propertyInheritanceCancelled"
+      ],
+      "cq.wcm.msm.action.excludedprops":[
+        "jcr:.*",
+        "sling:.*",
+        "cq:.*"
+      ]
+    },
+    "com.day.cq.wcm.undo.UndoConfig":    {
+      "cq.wcm.undo.whitelist":[
+        "foundation/components/text",
+        "foundation/components/download",
+        "foundation/components/image",
+        "foundation/components/slideshow",
+        "foundation/components/textimage",
+        "foundation/components/title",
+        "foundation/components/chart",
+        "foundation/components/external",
+        "foundation/components/flash",
+        "foundation/components/login",
+        "foundation/components/mvt",
+        "foundation/components/reference",
+        "foundation/components/search",
+        "foundation/components/sitemap",
+        "foundation/components/slideshow",
+        "foundation/components/table",
+        "foundation/components/video",
+        "foundation/components/carousel",
+        "foundation/components/mobileimage",
+        "foundation/components/mobilelist",
+        "foundation/components/mobilereference",
+        "foundation/components/mobiletextimage",
+        "foundation/components/account/passwordreset",
+        "foundation/components/form/start",
+        "foundation/components/form/address",
+        "foundation/components/form/checkbox",
+        "foundation/components/form/dropdown",
+        "foundation/components/form/hidden",
+        "foundation/components/form/captcha",
+        "foundation/components/form/image",
+        "foundation/components/form/imagebutton",
+        "foundation/components/form/password",
+        "foundation/components/form/radio",
+        "foundation/components/form/submit",
+        "foundation/components/form/text",
+        "foundation/components/form/upload",
+        "foundation/components/form/link",
+        "foundation/components/form/tags",
+        "foundation/components/account/accountname",
+        "cq/tagging/components/tagcloud",
+        "collab/forum/components/topic",
+        "collab/forum/components/post",
+        "collab/forum/components/forum",
+        "collab/commons/components/comments",
+        "collab/blog/components/archive",
+        "collab/blog/components/authors",
+        "collab/blog/components/categories",
+        "collab/blog/components/pages",
+        "collab/blog/components/search",
+        "collab/blog/components/workflow/blogsearchpingprocess",
+        "collab/blog/components/workflow/checkspamprocess",
+        "collab/forum/components/search",
+        "collab/forum/components/workflow/forumsubscribeprocess",
+        "collab/calendar/components/exportlink",
+        "collab/calendar/components/form/eventbasics",
+        "collab/calendar/components/form/icslink",
+        "collab/calendar/components/form/organizer",
+        "collab/calendar/components/form/pushworkflow",
+        "collab/calendar/components/form/recurrence",
+        "collab/calendar/components/workflow/calendarsubscriptionprocess",
+        "collab/commons/components/feedlink",
+        "collab/commons/components/toggle",
+        "collab/commons/components/ratings",
+        "cq/workflow/components/form/workflow_submit",
+        "fd/af/components/actions/nextitemnav",
+        "fd/af/components/actions/previtemnav",
+        "fd/af/components/actions/submit",
+        "fd/af/components/actions/reset",
+        "fd/af/components/guidebutton",
+        "fd/af/components/guidechart",
+        "fd/af/components/guidecheckbox",
+        "fd/af/components/guidedateinput",
+        "fd/af/components/guidedatepicker",
+        "fd/af/components/guidedropdownlist",
+        "fd/af/components/guidefileupload",
+        "fd/af/components/guideimage",
+        "fd/af/components/guideimagechoice",
+        "fd/af/components/guidenumericbox",
+        "fd/af/components/guidenumericstepper",
+        "fd/af/components/guidepasswordbox",
+        "fd/af/components/guideradiobutton",
+        "fd/af/components/guideseparator",
+        "fd/af/components/guidescribble",
+        "fd/af/components/guideswitch",
+        "fd/af/components/guidetermsandconditions",
+        "fd/af/components/guidetextbox",
+        "fd/af/components/guidetextdraw",
+        "fd/af/components/table",
+        "fd/af/components/toolbar",
+        "fd/af/components/panel",
+        "fd/afaddon/components/adobeSignBlock",
+        "fd/afaddon/components/esign",
+        "fd/afaddon/components/echosign",
+        "fd/afaddon/components/summary",
+        "fd/afaddon/components/verify",
+        "fd/af/components/aemform",
+        "fd/af/components/actions/fileattachmentlisting",
+        "fd/af/components/guideCaptcha",
+        "fd/af/components/guideContainer",
+        "fd/af/components/guideContainerWrapper",
+        "fd/af/components/guideemail",
+        "fd/af/components/guidefield",
+        "fd/af/components/guidefooter",
+        "fd/af/components/guideformtitle",
+        "fd/af/components/guideFragmentContainer",
+        "fd/af/components/guideheader",
+        "fd/af/components/guidePage",
+        "fd/af/components/guideseperator",
+        "fd/af/components/guidetelephone",
+        "fd/af/components/rootPanel",
+        "fd/af/components/tableHeader",
+        "fd/af/components/tableRow",
+        "fd/afaddon/components/actions/emailpdf",
+        "fd/afaddon/components/actions/lcprocess",
+        "fd/afaddon/components/actions/storepdf",
+        "fd/adaddon/components/guideAdModule",
+        "fd/adaddon/components/guideAdModuleGroup",
+        "fd/fp/components/actions/saveGuideDraft",
+        "fd/af/components/afFormTitle"
+      ],
+      "cq.wcm.undo.blacklist":[
+        "foundation/components/form/start:removeParagraph",
+        "collab/forum/components/topic:insertParagraph",
+        "collab/forum/components/topic:removeParagraph",
+        "collab/forum/components/post:insertParagraph",
+        "collab/forum/components/post:removeParagraph",
+        "foundation/components/form/address:updateParagraph",
+        "foundation/components/form/checkbox:updateParagraph",
+        "foundation/components/form/dropdown:updateParagraph",
+        "foundation/components/form/captcha:updateParagraph",
+        "foundation/components/form/image:updateParagraph",
+        "foundation/components/form/imagebutton:updateParagraph",
+        "foundation/components/form/text:updateParagraph",
+        "foundation/components/form/upload:updateParagraph",
+        "foundation/components/form/link:updateParagraph",
+        "foundation/components/form/tags:updateParagraph",
+        "foundation/components/form/password:updateParagraph",
+        "foundation/components/form/radio:updateParagraph",
+        "collab/blog/components/break",
+        "collab/calendar/components/calendar:removeParagraph",
+        "collab/calendar/components/event:updateParagraph",
+        "collab/calendar/components/lenses/agenda:removeParagraph",
+        "collab/calendar/components/lenses/month:removeParagraph"
+      ]
+    },
+    "com.day.cq.wcm.core.WCMRequestFilter":    {
+      "wcmfilter.mode":"edit"
+    },
+    "com.day.cq.wcm.core.mvt.MVTStatisticsImpl":    {
+      "mvtstatistics.trackingurl":"http://localhost:4502/libs/wcm/mvt/tracker"
+    },
+    "com.day.cq.wcm.mobile.core.impl.device.DeviceInfoTransformerFactory":    {
+      "device.info.transformer.enabled":true
+    },
+    "com.day.cq.wcm.mobile.core.impl.MobileEmulatorProvider~core-components":    {
+      "mobile.resourceTypes":[
+        "core/wcm/components/page/v1/page",
+        "core/wcm/components/page/v2/page",
+        "core/wcm/components/page/v3/page"
+      ]
+    },
+    "com.day.cq.wcm.foundation.forms.impl.FormParagraphPostProcessor~core-components":    {
+      "forms.formparagraphpostprocessor.enabled":true,
+      "forms.formparagraphpostprocessor.formresourcetypes":[
+        "core/wcm/components/form/container/v1/container",
+        "core/wcm/components/form/container/v2/container"
+      ]
+    },
+    "com.adobe.aem.wcm.seo.impl.sitemap.SitemapPublishHandlerImpl":    {
+      "configured":true
+    },
+    "com.day.cq.auth.impl.LoginSelectorHandler":    {
+      "service.ranking:Integer":5000,
+      "path":"/",
+      "auth.loginselector.defaultloginpage":"/libs/granite/core/content/login",
+      "auth.loginselector.mappings":[
+        "/libs/dam/remoteassets/content/loginerror:/libs/dam/remoteassets/content/query",
+        "/libs/granite/core/content/login:/libs"
+      ]
+    },
+    "com.day.cq.rewriter.linkchecker.impl.LinkInfoStorageImpl":    {
+      "service.save_external_link_references":"false"
+    },
+    "com.day.cq.wcm.foundation.forms.impl.FormParagraphPostProcessor~foundation":    {
+      "forms.formparagraphpostprocessor.enabled":true,
+      "forms.formparagraphpostprocessor.formresourcetypes":[
+        "foundation/components/form/start",
+        "foundation/components/form/end"
+      ]
+    },
+    "com.adobe.aem.graphiql.core.servlets.SitesGraphiQLRenderingServlet":    {
+      "sitesgraphiqldevmode.enabled":true
+    },
+    "org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~precompiled":    {
+      "user.mapping":[
+        "aem-precompiled-scripts:scene7configservice=[scene7-config-service]"
+      ]
+    }
+  },
+  "configuration-api:JSON|false":{
+    "region":"INTERNAL",
+    "configurations":{
+      "org.apache.felix.eventadmin.impl.EventAdmin":{
+        "title":"Apache Felix Event Admin Implementation",
+        "description":"Configuration for the Apache Felix Event Admin Implementation. This configuration overwrites configuration defined in framework properties of the same names.",
+        "since":"2021-04-30",
+        "enforce-on":"2021-07-31",
+        "properties":{
+          "org.apache.felix.eventadmin.ThreadPoolSize":{
+            "title":"Thread Pool Size",
+            "description":"The size of the thread pool used for event delivery. The default value is 20. Increase in case of a large amount of events. A value of less then 2 triggers the default value. If the pool is exhausted, event delivery is blocked until a thread becomes available from the pool. Each event is delivered in a thread from the pool unless the ignore timeouts is configured for the receiving event handler.",
+            "type":"INTEGER",
+            "range":{
+              "min":2,
+              "max":100
+            }
+          },
+          "org.apache.felix.eventadmin.AsyncToSyncThreadRatio":{
+            "title":"Async/sync Thread Pool Ratio",
+            "description":"The ratio of asynchronous to synchronous threads in the internal thread pool. Ratio must be positive and may be adjusted to represent the distribution of post to send operations. Applications with higher number of post operations should have a higher ratio.",
+            "type":"DOUBLE"
+          },
+          "org.apache.felix.eventadmin.Timeout":{
+            "title":"Timeout",
+            "description":"The deny-list timeout in milliseconds. The default value is 5000. Increase or decrease at own discretion. A value of less then 100 turns timeouts off. Any other value is the time in milliseconds granted to each event handler before it gets denied",
+            "type":"INTEGER"
+          },
+          "org.apache.felix.eventadmin.RequireTopic":{
+            "title":"Require Topic",
+            "description":"Are event handlers required to be registered with a topic? This is enabled by default. The specification says that event handlers must register with a list of topics they are interested in. Disabling this setting will enable that handlers without a topic are receiving all events i.e., they are treated the same as with a topic=*).",
+            "type":"BOOLEAN"
+          },
+          "org.apache.felix.eventadmin.IgnoreTimeout":{
+            "title":"Ignore Timeouts",
+            "description":"Configure event handlers to be called without a timeout. If a timeout is configured by default all event handlers are called using the timeout. For performance optimization it is possible to configure event handlers where the timeout handling is not used - this reduces the thread usage from the thread pools as the timout handling requires an additional thread to call the event handler. However, the application should work without this configuration property. It is a pure optimization! The value is a list of strings. If a string ends with a dot, all handlers in exactly this package are ignored. If the string ends with a star, all handlers in this package and all subpackages are ignored. If the string neither ends with a dot nor with a star, this is assumed to define an exact class name.",
+            "cardinality":-1,
+            "required":true,
+            "includes":[
+              "org.apache.felix*",
+              "org.apache.sling*",
+              "com.day*",
+              "com.adobe*"
+            ]
+          },
+          "org.apache.felix.eventadmin.IgnoreTopic":{
+            "title":"Ignore Topics",
+            "description":"For performance optimization it is possible to configure topics which are ignored by the event admin implementation. In this case, a event is not delivered to registered event handlers. The value is a list of strings (separated by comma). If a single value ends with a dot, all topics in exactly this package are ignored. If a single value ends with a star, all topics in this package and all sub packages are ignored. If a single value neither ends with a dot nor with a start, this is assumed to define an exact topic. A single star can be used to disable delivery completely.",
+            "cardinality":-1
+          }
+        },
+        "mode":"LENIENT"
+      },
+      "org.apache.felix.http":{
+        "title":"Apache Felix Jetty Based Http Service",
+        "description":"Configuration for the embedded Jetty Servlet Container.",
+        "since":"2021-04-30",
+        "enforce-on":"2021-07-31",
+        "properties":{
+          "org.apache.felix.http.timeout":{
+            "title":"Connection Timeout",
+            "description":"Time limit for reaching an timeout specified in milliseconds. This property applies to both HTTP and HTTP connections. Defaults to 60 seconds.",
+            "type":"INTEGER",
+            "range":{
+              "min":1
+            }
+          },
+          "org.apache.felix.http.session.timeout":{
+            "title":"Session Timeout",
+            "description":"Default lifetime of an HTTP session specified in a whole number of minutes. If the timeout is 0 or less, sessions will by default never timeout. The default is 0.",
+            "type":"INTEGER"
+          },
+          "org.apache.felix.http.jetty.threadpool.max":{
+            "title":"Thread Pool Max",
+            "description":"Maximum number of jetty threads. Using the default -1 uses Jetty's default (200).",
+            "type":"INTEGER"
+          },
+          "org.apache.felix.http.jetty.headerBufferSize":{
+            "title":"Header Buffer Size",
+            "description":"Size of the buffer for request and response headers. Default is 16KB.",
+            "type":"INTEGER"
+          },
+          "org.apache.felix.http.jetty.requestBufferSize":{
+            "title":"Request Buffer Size",
+            "description":"Size of the buffer for requests not fitting the header buffer. Default is 8KB.",
+            "type":"INTEGER"
+          },
+          "org.apache.felix.http.jetty.responseBufferSize":{
+            "title":"Response Buffer Size",
+            "description":"Size of the buffer for responses. Default is 24KB.",
+            "type":"INTEGER"
+          },
+          "org.apache.felix.http.jetty.maxFormSize":{
+            "title":"Maximum Form Size",
+            "description":"Size of Body for submitted form content. Default is 200KB.",
+            "type":"INTEGER"
+          },
+          "org.apache.felix.https.jetty.session.cookie.httpOnly":{
+            "title":"Session Cookie httpOnly",
+            "description":"Session Cookie httpOnly (true by default)",
+            "type":"BOOLEAN"
+          },
+          "org.apache.felix.https.jetty.session.cookie.secure":{
+            "title":"Session Cookie secure",
+            "description":"Session Cookie secure (false by default)",
+            "type":"BOOLEAN"
+          },
+          "org.eclipse.jetty.servlet.SessionIdPathParameterName":{
+            "title":"Session Id path parameter",
+            "description":"Defaults to jsessionid. If set to null or \"none\" no URL rewriting will be done."
+          },
+          "org.eclipse.jetty.servlet.CheckingRemoteSessionIdEncoding":{
+            "title":"Check remote session encoding",
+            "description":"If true, Jetty will add JSESSIONID parameter even when encoding external urls with calls to encodeURL() (true by default)",
+            "type":"BOOLEAN"
+          },
+          "org.eclipse.jetty.servlet.SessionCookie":{
+            "title":"Session Cookie Name",
+            "description":"Session Cookie Name"
+          },
+          "org.eclipse.jetty.servlet.SessionDomain":{
+            "title":"Session Domain",
+            "description":"If this property is set, then it is used as the domain for session cookies. If it is not set, then no domain is specified for the session cookie. Default is none."
+          },
+          "org.eclipse.jetty.servlet.SessionPath":{
+            "title":"Session Path",
+            "description":"If this property is set, then it is used as the path for the session cookie. Default is context path."
+          },
+          "org.eclipse.jetty.servlet.MaxAge":{
+            "title":"Session Max Age",
+            "description":"Max age for the session cookie. Default is -1.",
+            "type":"INTEGER"
+          },
+          "org.eclipse.jetty.servlet.SessionScavengingInterval":{
+            "title":"Session Scavenging Interval",
+            "description":"Interval of session scavenging in seconds. Default is Sring.valueOf(HouseKeeper.DEFAULT_PERIOD_MS / 1000)",
+            "type":"INTEGER"
+          },
+          "org.apache.felix.jetty.gziphandler.enable":{
+            "title":"Enable GzipHandler",
+            "description":"Whether the server should use a server-wide gzip handler. Default is false.",
+            "type":"BOOLEAN"
+          },
+          "org.apache.felix.jetty.gzip.minGzipSize":{
+            "title":"Gzip Min Size",
+            "description":"The minimum response size to trigger dynamic compression. Default is GzipHandler.DEFAULT_MIN_GZIP_SIZE",
+            "type":"INTEGER"
+          },
+          "org.apache.felix.jetty.gzip.compressionLevel":{
+            "title":"Gzip Compression Level",
+            "description":"The compression level to use. Default is Deflater.DEFAULT_COMPRESSION",
+            "type":"INTEGER"
+          },
+          "org.apache.felix.jetty.gzip.inflateBufferSize":{
+            "title":"Gzip Inflate Buffer Size",
+            "description":"The size in bytes of the buffer to inflate compressed request, or <= 0 for no inflation. Default is -1.",
+            "type":"INTEGER"
+          },
+          "org.apache.felix.jetty.gzip.syncFlush":{
+            "title":"Gzip Sync Flush",
+            "description":"True if Deflater#SYNC_FLUSH should be used, else Deflater#NO_FLUSH will be used. Default is false.",
+            "type":"BOOLEAN"
+          },
+          "org.apache.felix.jetty.gzip.excludedUserAgents":{
+            "title":"Gzip Exclude User Agents",
+            "description":"The regular expressions matching additional user agents to exclude. Default is none."
+          },
+          "org.apache.felix.jetty.gzip.includedMethods":{
+            "title":"Gzip Include Methods",
+            "description":"The additional http methods to include in compression. Default is none.",
+            "cardinality":-1
+          },
+          "org.apache.felix.jetty.gzip.excludedMethods":{
+            "title":"Gzip Exclude Methods",
+            "description":"The additional http methods to exclude in compression. Default is none.",
+            "cardinality":-1
+          },
+          "org.apache.felix.jetty.gzip.includedPaths":{
+            "title":"Gzip Included Paths",
+            "description":"The additional path specs to include. Inclusion takes precedence over exclusion. Default is none.",
+            "cardinality":-1
+          },
+          "org.apache.felix.jetty.gzip.excludedPaths":{
+            "title":"Gzip Excluded Paths",
+            "description":"The additional path specs to exclude. Inclusion takes precedence over exclusion. Default is none.",
+            "cardinality":-1
+          },
+          "org.apache.felix.jetty.gzip.includedMimeTypes":{
+            "title":"Gzip Included Mime Types",
+            "description":"The included mime types. Inclusion takes precedence over exclusion. Default is none.",
+            "cardinality":-1
+          },
+          "org.apache.felix.jetty.gzip.excludedMimeTypes":{
+            "title":"Gzip Excluded Mime Types",
+            "description":"The excluded mime types. Inclusion takes precedence over exclusion. Default is none.",
+            "cardinality":-1
+          },
+          "org.apache.felix.http.session.invalidate":{
+            "title":"Invalidate Container Session",
+            "description":"If this property is set, the container session is automatically validated.",
+            "type":"BOOLEAN"
+          },
+          "org.apache.felix.http.session.container.attribute":{
+            "title":"Attributes added by server.",
+            "description":"The attributes added by underlying session. Use this to invalidate session.",
+            "cardinality":-1
+          },
+          "org.apache.felix.http.session.uniqueid":{
+            "title":"Unique Session Id",
+            "description":"If this property is set, each http context gets a unique session id (derived from the container session).",
+            "type":"BOOLEAN"
+          }
+        },
+        "mode":"LENIENT"
+      },
+      "org.apache.sling.scripting.cache":{
+        "title":"Apache Sling Script Cache",
+        "description":"The Script Cache is useful for running previously compiled scripts",
+        "since":"2021-04-30",
+        "enforce-on":"2021-07-31",
+        "properties":{
+          "org.apache.sling.scripting.cache.size":{
+            "title":"Cache Size",
+            "description":"The Cache Size defines the maximum number of compiled script references that will be stored in the cache's internal map.",
+            "type":"INTEGER",
+            "range":{
+              "min":2048
+            }
+          },
+          "org.apache.sling.scripting.cache.additional_extensions":{
+            "title":"Additional Extensions",
+            "description":"Scripts from the search paths with these extensions will also be monitored so that changes to them will clean the cache if the cache contains them.",
+            "cardinality":-1,
+            "required":true,
+            "includes":[
+              "js"
+            ]
+          }
+        },
+        "mode":"LENIENT"
+      },
+      "org.apache.felix.webconsole.internal.servlet.OsgiManager":{
+        "since":"2021-04-30",
+        "enforce-on":"2021-07-31",
+        "mode":"LENIENT"
+      },
+      "com.day.cq.auth.impl.cug.CugSupportImpl":{
+        "since":"2021-04-30",
+        "enforce-on":"2021-07-31",
+        "mode":"LENIENT"
+      },
+      "com.day.cq.jcrclustersupport.ClusterStartLevelController":{
+        "since":"2021-04-30",
+        "enforce-on":"2021-07-31",
+        "mode":"LENIENT"
+      },
+      "org.apache.sling.jcr.davex.impl.servlets.SlingDavExServlet":{
+        "since":"2021-08-25",
+        "enforce-on":"2021-11-26",
+        "mode":"LENIENT"
+      },
+      "com.adobe.granite.toggle.impl.ToggleRouterImpl":{
+        "mode":"STRICT"
+      },
+      "org.apache.sling.engine.impl.log.RequestLoggerFilter":{
+        "mode":"STRICT"
+      },
+      "org.apache.sling.feature.apiregions.impl":{
+        "mode":"STRICT"
+      },
+      "org.apache.sling.jcr.resource.internal.helper.jcr.BinaryDownloadUriProvider":{
+        "mode":"STRICT"
+      },
+      "com.day.cq.commons.impl.ExternalizerImpl":{
+        "title":"Day CQ Link Externalizer",
+        "description":"Externalizer is a service that allows you to programmatically transform a resource path into an external and absolute URL",
+        "properties":{
+          "externalizer.domains":{
+            "title":"Domains",
+            "description":"List of domain mappings. In the form: 'name [scheme://]domain.com[:port][/contextpath]'. Standard required names are 'publish' (public website DNS, such as 'http://www.mysite.com'), 'author' (author DNS, such as 'https://author.mysite.com') and 'local' (this instance directly). The scheme will be used as default scheme (if not specified by the code) and can globally define whether http or https is desired. The context path must match the installation of the sling launchpad webapp on that instance. Additional custom domains can be added, each with a unique name.",
+            "cardinality":-1,
+            "required":true,
+            "regex":"^[ ]*\\w+ [^ ]+[ ]*$",
+            "placeholder-policy":"ALLOW",
+            "placeholder-regex":"^[ ]*\\w+ [^ ]+[ ]*$"
+          },
+          "externalizer.encodedpath":{
+            "title":"Assume encoded path",
+            "description":"If active, Externalizer assumes that resource paths passed to its methods are URL-encoded. This might be necessary if your resource paths potentially contain '?' and/or '#' (which would be considered to start the query string/the fragment of the URL otherwise). Note that activating this setting may cause issues with other parts of the application that assume non-encoded paths if affected resource paths contain characters that need to be URL-encoded.",
+            "type":"BOOLEAN"
+          },
+          "externalizer.host":{
+            "title":"Host name",
+            "deprecated":"Deprecated - use 'local' under domains instead and keep this property empty. - Host and port of the server as adressed from the outside, e.g. 'server.com' or 'server.com:8080'."
+          },
+          "externalizer.contextpath":{
+            "title":"Context path",
+            "deprecated":"Deprecated - use 'local' under domains instead and keep this property empty. - Context path under which the CQ/Sling launchpad webapp is running, e.g. '/contextpath'."
+          }
+        },
+        "mode":"LENIENT"
+      },
+      "com.day.cq.mailer.DefaultMailService":{
+        "title":"Day CQ Mailing Service",
+        "description":"The service sends out personalized mailings to MailingLists.",
+        "since":"2021-04-30",
+        "enforce-on":"2021-07-31",
+        "properties":{
+          "smtp.host":{
+            "title":"SMTP server host name",
+            "description":"The mailer uses this SMTP server to send messages"
+          },
+          "smtp.port":{
+            "title":"SMTP server port",
+            "description":"Port number to use to connect to the SMTP server",
+            "type":"INTEGER",
+            "options":[
+              {
+                "value":"465"
+              },
+              {
+                "value":"587"
+              },
+              {
+                "value":"25"
+              }
+            ]
+          },
+          "smtp.user":{
+            "title":"SMTP user",
+            "description":"The user for authentication through SMTP"
+          },
+          "smtp.password":{
+            "title":"SMTP password",
+            "description":"The password for authentication through SMTP. The password can either be provided plain text, or crypted via the Crypto Support feature (Main -> Crypto Support menu)"
+          },
+          "from.address":{
+            "title":"\"From\" address",
+            "description":"The email address to use in the \"From:\" field of messages sent by the mailer"
+          },
+          "smtp.ssl":{
+            "title":"SMTP use SSL",
+            "description":"If enabled, an SSL connection is set up.",
+            "type":"BOOLEAN"
+          },
+          "smtp.starttls":{
+            "title":"SMTP use StartTLS",
+            "description":"If enabled, TLS connection is started.",
+            "type":"BOOLEAN"
+          },
+          "smtp.requiretls":{
+            "title":"SMTP requires StartTLS",
+            "description":"If enabled, TLS connection is required.",
+            "type":"BOOLEAN"
+          },
+          "debug.email":{
+            "title":"Debug email",
+            "description":"If enabled, interactions with the SMTP server are dumped to the operating system terminal that runs Sling",
+            "type":"BOOLEAN"
+          },
+          "oauth.flow":{
+            "title":"Oauth Flow",
+            "description":"If enabled, interactions with the SMTP server will use OAUTH2 protocol",
+            "type":"BOOLEAN"
+          }
+        },
+        "mode":"LENIENT"
+      }
+    },
+    "factory-configurations":{
+      "org.apache.felix.http":{
+        "since":"2021-04-30",
+        "enforce-on":"2021-07-31",
+        "mode":"LENIENT"
+      },
+      "org.apache.sling.commons.log.LogManager.factory.config":{
+        "properties":{
+          "org.apache.sling.commons.log.level":{
+            "title":"Log Level",
+            "description":"Root Logger log level setting.",
+            "options":[
+              {
+                "title":"Info",
+                "value":"INFO"
+              },
+              {
+                "title":"Debug",
+                "value":"DEBUG"
+              },
+              {
+                "title":"Trace",
+                "value":"TRACE"
+              },
+              {
+                "title":"Info",
+                "value":"info"
+              },
+              {
+                "title":"Debug",
+                "value":"debug"
+              },
+              {
+                "title":"Trace",
+                "value":"trace"
+              }
+            ],
+            "default":"info",
+            "mode":"SILENT_DEFINITIVE"
+          },
+          "org.apache.sling.commons.log.names":{
+            "title":"Logger",
+            "description":"The logger names applicable for this logger configuration. Each logger name applies for any child category unless configured otherwise. E.g. a logger name of org.apache.sling applies to logger org.apache.sling.commons unless there is a different configuration for org.apache.sling.commons.",
+            "cardinality":-1
+          },
+          "org.apache.sling.commons.log.file":{
+            "title":"Log File",
+            "description":"The name and path of the log file. If this is empty, logging goes to standard output (the console). If this path is relative it is resolved below ${sling.home}."
+          },
+          "org.apache.sling.commons.log.additiv":{
+            "title":"Additivity",
+            "description":"If set to false then logs from these loggers would not be sent to any appender attached higher in the hierarchy",
+            "type":"BOOLEAN"
+          }
+        },
+        "mode":"DEFINITIVE",
+        "internal-names":[
+          "access",
+          "audit",
+          "auditlog",
+          "request",
+          "history",
+          "queryrecorder"
+        ]
+      },
+      "org.apache.http.proxyconfigurator":{
+        "since":"2021-08-30",
+        "enforce-on":"2021-09-30",
+        "mode":"LENIENT"
+      },
+      "org.apache.sling.feature.apiregions.factory":{
+        "mode":"STRICT"
+      },
+      "com.adobe.granite.toggle.monitor.systemproperty":{
+        "mode":"STRICT"
+      }
+    },
+    "mode":"LENIENT"
+  }
+}
