@@ -20,5 +20,5 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Check OSGi Configurations
-      run: java -jar javatool ui.config/src/main/content/jcr_root
+      run: java -jar javatool validate-configs --repositoryRootDirectory ui.config/src/main/content/jcr_root
   
